@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPN180-登录弹框</title>
+    <link rel="icon" href="../../Public/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../Public/Css/layui.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="../../Public/Js/jquery_v3.4.1.js"></script>
+    <script src="../../Public/layui/lay/modules/jquery.js"></script>
+    <script src="../../Public/layui/layui.js"></script>
+</head>
+<body>
+<div>
+    <form class="layui-form" action="" style="padding-top:30px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入框：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input" style="width: 70%">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码框：</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 70%">
+            </div>
+            <div class="layui-form-mid layui-word-aux"><p style="color: red">忘记密码？</p></div>
+        </div>
+        <div class="layui-form-item" style="padding-left: 300px">
+            <button id="loginBtn" class="layui-btn layui-btn-sm layui-btn-normal">登&nbsp&nbsp录</button>
+            <button id="callOffBtn" class="layui-btn layui-btn-sm layui-btn-primary">取&nbsp&nbsp消</button>
+        </div>
+    </form>
+</div>
+<script>
+    $("#callOffBtn").click(function () {
+        $(".layui-layer-close1",top.document).get(0).click();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPN180监控中心-网关通道界面</title>
+    <link rel="stylesheet" href="../../Public/layui/css/layui.css">
+    <script src="../../Public/Js/jquery_v3.4.1.js"></script>
+    <script src="../../Public/Js/jquery.cookie.js"></script>
+    <script src="../../Public/layui/layui.all.js"></script>
+    <script src="../../Public/layui/lay/modules/jquery.js"></script>
+    <script src="../../Public/Js/highcharts.js"></script>
+    <script src="../../Public/Js/exporting.js"></script>
+    <script src="../../Public/Js/oldie.js"></script>
+    <script src="../../Public/Js/highcharts-zh_CN.js"></script>
+</head>
+<style>
+    p{
+        text-align: center;
+        font-size: 16px;
+        color: dodgerblue;
+        margin:0 auto;
+    }
+</style>
+<body>
+<div class="layui-container">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+       <div style="width: 100%;height: 100%;float: left">
+           <div style="width: 33%;height: 100%;float:left;margin:0 auto;">
+               <div style="width: 100%;height: 100%;padding-top: 4%">
+                   <div style="width: 96%;float: left">
+                       <fieldset class="layui-elem-field" style="padding: 1%">
+                           <legend> <i class="layui-icon layui-icon-spread-left"> </i></legend>
+                           <div class="layui-field-box">
+                               <p id="nub" ></p>
+                           </div>
+                       </fieldset>
+                       <div style="width: 100%;padding-top: 5%;float: left">
+                           <fieldset class="layui-elem-field layui-field-title" style="margin-top: 1%;margin-bottom: 0">
+                               <legend><p style="color: #0C0C0C;font-size: 15px">通道工作状态</p></legend>
+                           </fieldset>
+                           <table class="layui-table">
+                               <colgroup>
+                                   <col width="150">
+                                   <col width="200">
+                                   <col>
+                               </colgroup>
+                               <thead>
+                               <tr>
+                                   <th>参数值</th>
+                                   <th>通道状态</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr>
+                                   <td>000</td>
+                                   <td> <h6 style="float: left;padding: 3px">正常运行 </h6><span class="layui-badge-dot layui-bg-blue" style="float: left"></span></td>
+                               </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                   </div>
+                   <div style="width: 96%;padding-top: 1%;float: left">
+                       <fieldset class="layui-elem-field layui-field-title" style="margin-top: 1%;margin-bottom: 0">
+                           <legend><p style="color: #0C0C0C;font-size: 15px">场强相关</p></legend>
+                       </fieldset>
+                       <table class="layui-table">
+                           <colgroup>
+                               <col width="200">
+                               <col width="150">
+                               <col width="150">
+                               <col>
+                           </colgroup>
+                           <thead>
+                           <tr>
+                               <th>名称</th>
+                               <th>参数</th>
+                               <th>状态</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                               <td>实时场强</td>
+                               <td>000</td>
+                               <td><h6 style="float: left;padding-right: 3%">正常</h6><span class="layui-badge-dot layui-bg-blue" style="float: left"></span></td>
+                           </tr>
+                           <tr>
+                               <td>收发信机场强</td>
+                               <td>000</td>
+                               <td><h6 style="float: left;padding-right: 3%">正常</h6><span class="layui-badge-dot layui-bg-blue" style="float: left"></span></td>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </div>
+                   <div style="width: 96%;padding-top: 1%;float: left">
+                       <fieldset class="layui-elem-field layui-field-title" style="margin-top: 1%;margin-bottom: 0">
+                           <legend><p style="color: #0C0C0C;font-size: 15px">语音相关</p></legend>
+                       </fieldset>
+                       <table class="layui-table">
+                           <colgroup>
+                               <col width="150">
+                               <col width="150">
+                               <col width="150">
+                           </colgroup>
+                           <thead>
+                           <tr>
+                               <th>语音输入增益</th>
+                               <th>语音输出增益</th>
+                               <th>语音信号值</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                               <td>000</td>
+                               <td>000</td>
+                               <td>000</td>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+           <div style="width: 30%;height: 100%;float:left;margin:0 auto;padding-top: 1%;padding-left: 3%">
+               <fieldset class="layui-elem-field layui-field-title" style="margin-top: 1%;margin-bottom: 0;padding: 3%">
+                   <legend><p style="color: #0C0C0C;font-size: 15px">收发信件的中单片机的实时温度</p></legend>
+               </fieldset>
+               <div id="slideTest7" class="demo-slider" style=""></div>
+               <div id="test-slider-tips1" style="position:relative; left: 30px; top: 20px;color: dodgerblue"></div>
+               <div style="width: 96%;padding-top: 15%;float: left"></div>
+               <div style="width: 48%;background: #F2F2F2;padding:  1% 0% 1% 1%;float: left">
+                   <div class="layui-card" style="width: 98%">
+                       <div class="layui-card-header">ATOM的IP地址:</div>
+                       <div class="layui-card-body">
+                           <p>000.000</p>
+                       </div>
+                   </div>
+               </div>
+               <div style="width: 48%;background: #F2F2F2;padding:  1% 0% 1% 0%;float: left">
+                   <div class="layui-card" style="width: 98%">
+                       <div class="layui-card-header">输入频率:</div>
+                       <div class="layui-card-body">
+                           <p>0-0-0-0-0-0</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div style="width: 30%;height: 100%;float:left;margin:0 auto;padding-top: 1%;padding-left: 4%">
+               <fieldset class="layui-elem-field layui-field-title" style="margin-top: 1%;margin-bottom: 0;padding: 3%">
+                   <legend><p style="color: #0C0C0C;font-size: 15px">当前通道收到数据包相关延时</p></legend>
+               </fieldset>
+               <div style=" width:100%;float: left">
+                   <div style="width: 80%;height: 160px;padding-left: 10%">
+                       <div id="container" style="max-width:100%;height:100%;"></div>
+                   </div>
+               </div>
+               <div style=" width:100%;float: left">
+                   <div style="width: 80%;height: 160px;padding-left: 10%">
+                       <div id="container1" style="max-width:100%;height:100%;"></div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</div>
+<script>
+    //获取页面传过来的url值
+    var url = window.location.search.substring(1);
+    //获取id
+    var id = url.substring(3,8);
+    //获取通道号
+    var channel = url.substring(17,18);
+    console.log("id:"+id+"  channel:"+channel);
+    $("#nub").html("C."+channel+"通道")
+    var ins1 = null;
+    var state = "正常";
+    //配置滑块
+    layui.use('slider', function(){
+        var $ = layui.$
+            ,slider = layui.slider;
+         ins1 = slider.render({
+            elem: '#slideTest7'
+             ,min:0
+             ,max:120
+             ,change: function(value){
+                 if (value>70){
+                     $("#test-slider-tips1").css("color","#FF5722");
+                 }else {
+                     $("#test-slider-tips1").css("color","dodgerblue");
+                 }
+                 var str = (value<70) ? str = '正常' : str='过高';
+                 $('#test-slider-tips1').html('当前数值：'+ value+'℃'+"&nbsp&nbsp&nbsp&nbsp&nbsp"+'温度状态：'+ str);
+            }
+        });
+    });
+    //动态设置滑块参数
+    setInterval(function(){
+        var value =Math.floor(Math.random()*120);
+        ins1.setValue(value);
+    }, 1000);
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+    function activeLastPointToolip(chart) {
+        var points = chart.series[0].points;
+        chart.tooltip.refresh(points[points.length -1]);
+    }
+
+    var chart = Highcharts.chart('container', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // 当前时间
+                            y = Math.floor(Math.random()*1000);          // 随机值
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: '数据包延迟的最短时间',
+            style: {
+                color: '#1f1f1f',
+                "fontSize": "16px",
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2)+'ms';
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '平均延时',
+            marker: {
+                //小圆点
+                enabled: false
+            },
+            data: (function () {
+                // 生成随机值
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.floor(Math.random()*1000),
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+    var chart1 = Highcharts.chart('container1', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // 当前时间
+                            y = Math.floor(Math.random()*1000);          // 随机值
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: '数据包延迟的最长时间',
+            style: {
+                color: '#1f1f1f',
+                "fontSize": "16px",
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2)+'ms';
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '实时延时',
+            marker: {
+                //小圆点
+                enabled: false
+            },
+            data: (function () {
+                // 生成随机值
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.floor(Math.random()*1000),
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+</script>
+</body>
+</html>

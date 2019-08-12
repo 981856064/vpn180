@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>VPN180监控中心</title>
+    <link rel="icon" href="../../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
+    <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/Js/jquery.cookie.js"></script>
+    <script src="../../static/layui/layui.all.js"></script>
+    <script src="../../static/layui/lay/modules/layer.js"></script>
+    <script src="../../static/layui/lay/modules/jquery.js"></script>
+    <style>
+        body .demo-class .layui-layer-title{background: #338bff; color:#fff; border: none;}
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-cyan">
+        <div class="layui-logo"><p>VPN180监控中心</p></div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="http://127.0.0.1/test/public/">监控首页</a></li>
+            <li class="layui-nav-item"><a href="http://www.rioa.org.cn">研究院官网</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">XX管理</a></dd>
+                    <dd><a href="">XX管理</a></dd>
+                    <dd><a href="">XX管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li id="userLi" style="visibility: hidden" class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="../../static/Img/admin.jpg" class="layui-nav-img">
+                    admin
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><button class="layui-btn layui-btn-primary" id="operation" align="center" style="width: 100%;height: 50%;border-style:hidden">数据操作</button></dd>
+                    <dd><button class="layui-btn layui-btn-primary" id="set" align="center" style="width: 100%;height: 50%;border-style:hidden">安全设置</button></dd>
+                </dl>
+            </li>
+            <li id="loginLi" class="layui-nav-item" style="padding-right: 30px"><h1 id="loginH5">Admin登录</h1></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-cyan">
+        <div class="layui-side-scroll layui-bg-cyan">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree layui-bg-cyan">
+                <li class="layui-nav-item layui-nav-itemed ">
+                    <a class="" href="javascript:;">数据可视化</a>
+                    <dl class="layui-nav-child layui-bg-red">
+                        <dd id ="dd1"><a href="javascript:;">文件数据</a></dd>
+                        <dd id ="dd2"><a href="javascript:;">音频数据</a></dd>
+                        <dd id ="dd3"><a href="javascript:;">用户界面</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">栏目二</a>
+                    <dl class="layui-nav-child ">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li id="answerLi" class="layui-nav-item"><a href="javascript:;">疑难解答</a></li>
+                <li id="aboutLi" class="layui-nav-item"><a href="javascript:;">关于</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="overflow: hidden;">
+        <!-- 内容主体区域 -->
+        <iframe id="iframes" src="seat" style="border:0; width:100%; height:100%"></iframe>
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © 2019
+    </div>
+</div>
+<script src="../../static/layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+    $(document).ready(function () {
+        var cookie =$.cookie('admin');
+        console.log(cookie);
+        if (cookie=="admin"){
+            $("#userLi").css("visibility","visible");
+            $("#loginH5").html("退出登录");
+        }
+        //栏目跳转
+        $("#dd1").click(function () {
+            document.getElementById("iframes").src="files.html";
+        })
+        $("#dd2").click(function () {
+            document.getElementById("iframes").src="HC.html";
+        })
+        $("#dd3").click(function () {
+            document.getElementById("iframes").src="channel.html";
+        })
+
+        $("#answerLi").click(function () {
+            document.getElementById("iframes").src="answer.html";
+        })
+        $("#aboutLi").click(function () {
+            document.getElementById("iframes").src="about.html";
+        })
+
+        //admin
+        $("#operation").click(function () {
+            document.getElementById("iframes").src="HC.html";
+        })
+        $("#set").click(function () {
+            document.getElementById("iframes").src="HC.html";
+        })
+
+        //登录/退出
+        $("#loginLi").click(function () {
+            var cookie =$.cookie('admin');
+            if (cookie=="admin"){
+                layer.msg('提示信息：<br>确认退出admin？', {
+                    time: 20000, //20s后自动关闭
+                    btn: ['确定', '取消'],
+                    btn1:function(){
+                        $.cookie('admin', null);
+                        $("#userLi").css("visibility","hidden");
+                        $("#loginH5").html("Admin登录");
+                        layer.closeAll(); //关闭所有弹窗
+                    }
+                });
+
+            }else {
+                layer.open({
+                    type: 1
+                    , id: 'login'
+                    , skin: 'demo-class'
+                    , title: 'Admin登录'
+                    , area: ['430px', '290px']
+                    , shade: 0
+                    , anim: 5
+                    , maxmin: true
+                    , content: '<form class="layui-form" action="" style="padding-top:30px">\n' +
+                    '    <div class="layui-form-item">\n' +
+                    '        <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i>用户：</label>\n' +
+                    '        <div class="layui-input-block">\n' +
+                    '            <input type="text" name="title" required  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input" style="width: 80%">\n' +
+                    '        </div>\n' +
+                    '    </div>\n' +
+                    '    <div class="layui-form-item">\n' +
+                    '        <label class="layui-form-label"><i class="layui-icon layui-icon-password"></i>密码：</label>\n' +
+                    '        <div class="layui-input-inline">\n' +
+                    '            <input id="userName" type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" style="width: 80%">\n' +
+                    '        </div>\n' +
+                    '    </div>\n' +
+                    '    <div class="layui-form-item">\n' +
+                    '        <div class="layui-input-block">\n' +
+                    '      <a href="../very_sorry.html"><p style="color: red">忘记密码？</p></a>\n' +
+                    '        </div>\n' +
+                    '    </div>\n' +
+                    '</form>'
+                    , btn: ['登&nbsp录', '取&nbsp消']
+                    , btn1: function (index, layero) {
+                        //按钮【登录】的回调
+                        var userName = null, passWord = null;
+                        $(layero).find("input").each(function (i, v) {
+                            if (i == 0) {          //i:0 输入框
+                                userName = $(v).val();
+                            } else if (i == 1) {   //i:1 密码框
+                                passWord = $(v).val();
+                            }
+                        });
+
+                        if (userName != "" && passWord != "") {
+                            $.ajax({
+                                type: "POST",
+                                url: "../controller/login.php",
+                                data: {
+                                    "title": userName,
+                                    "password": passWord,
+                                },
+                                name: "post",
+                                success: function (data) {
+                                    console.log(data);
+                                    if (data == "true") {
+                                        $("#userLi").css("visibility", "visible");
+                                        $("#loginH5").html("退出登录");
+                                        $.cookie('admin', userName);
+                                        $(".layui-layer-close1", top.document).get(0).click();
+                                        layer.msg('登录成功', {
+                                            time: 2000, //20s后自动关闭
+                                        });
+                                    } else {
+                                        layer.msg('提示信息：<br>账号或密码输入不正确', {
+                                            time: 20000, //20s后自动关闭.
+                                            btn: ['明白了']
+                                        });
+                                    }
+                                },
+                                error: function (data) {
+                                    alert(data.result);
+                                }
+                            });
+
+                        } else {
+                            layer.msg('提示信息：<br>账号和密码输入不能为空', {
+                                time: 20000, //20s后自动关闭
+                                btn: ['明白了']
+                            });
+                            return;
+                        }
+                    }
+                    , btn2: function (index, layero) {
+                        //按钮【取消】的回调
+                        layer.closeAll(); //关闭所有弹窗
+                    }
+                    , success: function (layero) {
+                        // layer.setTop(layero); //置顶当前窗口
+                    }
+                });
+            }
+        })
+    });
+</script>
+</body>
+</html>

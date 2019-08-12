@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="../../Public/layui/lay/modules/jquery.js"></script>
+    <script src="../../Public/Js/highcharts.js"></script>
+    <script src="../../Public/Js/exporting.js"></script>
+    <script src="../../Public/Js/oldie.js"></script>
+    <script src="../../Public/Js/highcharts-zh_CN.js"></script>
+</head>
+<body>
+    <div>消息内容：<br/>
+        <textarea id="text_chat_content" readonly="readonly" cols="20" rows="5"></textarea>
+        <br/>
+        <button id="bt_left">离开</button>
+        <br/>
+        输入框：<input id="in_msg" type="text"/>
+        <button id="bt_send">发送</button>
+    </div>
+    <div>
+        <div id="container" style="width:700px;height:380px;margin:0 auto;"></div>
+    </div>
+
+<script>
+    var url =null;
+    //highcharts图表
+    var chart = Highcharts.chart('container', {
+        chart: {
+            backgroundColor: '#000',
+            type: 'spline',
+        },
+        title: {
+            text: '标题'
+        },
+        subtitle: {
+            text: '副标题'
+        },
+        xAxis: {
+            crosshair: false,//准星线
+            title: {
+                text:'X轴',
+            },
+            tickPixelInterval: 100,
+            min: 0,
+            max:160
+        },
+        yAxis: {
+            crosshair: false,//准星线
+            title: {
+                text: 'Y轴'
+            },
+            tickPositions: [-200,-150,-100,-50,0,50,100,150,200]
+        },
+        plotOptions: {
+            series: {
+                //数据动画渲染
+                animation: false
+            },
+            line: {
+                dataLabels: {
+                    // 开启数据标签
+                    enabled: false
+                },
+                // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            id:'exSeries',
+            marker: {
+                //小圆点
+                enabled: false
+            },
+            color:'#13e616',
+            name: '数据波形',
+            data: []
+        },]
+    });
+
+    $(document).ready(function () {
+        var urlPrefix = "ws://localhost:8080/chat-room/";
+        var ws = null;
+        //生成唯一ID
+        var uuid = Number(Math.random().toString().substr(3,length) + Date.now()).toString(36);
+        //这一步，会调用服务端的@OnOpen注解标注的方法
+        ws = new WebSocket(urlPrefix + uuid);
+        ws.onmessage = function (data) {
+            //接收服务端返回给前端的json
+            var websocketJson = $.parseJSON(data.data);
+            var array = websocketJson.dataByte;
+            //更新表格数据
+            chart.series[0].setData(array, true, false, false);
+        };
+        ws.onclose = function () {
+            $('#text_chat_content').append("用户【" + uuid +"】离开！" + "\n");
+        };
+        //发送消息
+        $('#bt_send').click(function () {
+            if (ws){
+                ws.send($('#in_msg').val());
+            }
+        });
+        //离开
+        $('#bt_left').click(function () {
+            if (ws!=null){
+                ws.close();
+            }
+        });
+
+        // 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        window.onbeforeunload = function() {
+            ws.close();
+        }
+    });
+</script>
+</body>
+</html>

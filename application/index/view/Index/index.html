@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VPN180监控中心</title>
+    <link rel="icon" href="static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="static/Css/layui.css">
+    <script src="static/Js/jquery_v3.4.1.js"></script>
+    <script src="static/Js/jquery.cookie.js"></script>
+    <script src="static/layui/layui.all.js"></script>
+    <script src="static/layui/lay/modules/layer.js"></script>
+    <script src="static/layui/lay/modules/jquery.js"></script>
+</head>
+<style>
+    #one{
+        background-image: url("static/Img/1.jpg");
+        background-size: 100% 100%;
+    }
+    #two{
+        background-image: url("static/Img/2.jpg");
+        background-size: 100% 100%;
+    }
+    h1{
+        color: #fffefd;
+        font-size: 50px;
+        font-family: 楷体;
+    }
+    h5{
+        color: #fffefd;
+        font-size: 18px;
+        font-family: 楷体;
+    }
+    p{
+        font-size: 25px;color: #fff;font-family: 楷体;
+    }
+    h2{
+        color: #fffefd;
+        font-size: 18px;
+        font-family: 楷体;
+    }
+</style>
+<body>
+<div class="layui-carousel" id="carousel">
+    <div carousel-item>
+        <!-- 主界面 -->
+        <div id="one">
+            <div style="padding: 3%">
+                <div style="float:left;padding-right: 5px"><img src="static/Img/time.png" style="width: 32px;height: 32px"></div>
+                <div style="float:left;">
+                    <p id="time">00：00</p>
+                </div>
+            </div>
+            <div  class="layui-anim layui-anim-up" style="margin:auto;position:absolute;left:50%;top:60%;">
+                <h1 align="center" >VPN180监控中心</h1>
+                <h5 style="padding: 15px;" align="center">由职业人员倾情打造，面向现有地面VHF通信网络问题的解决方案</h5>
+                <div style="margin:0 auto;width: 238px">
+                    <button id="joinBtn" class="layui-btn layui-btn-lg layui-btn-normal" style=" display:block;float: left" >进入中心</button>
+                    <button id="registeredBtn" class="layui-btn layui-btn-lg layui-btn-danger" style=" display:block;float: left">注册用户</button>
+                </div>
+            </div>
+        </div>
+        <!-- 登录界面 -->
+        <div id="two">
+            <div style="padding: 3%">
+                <div style="float:left;padding-right: 5px"><img src="static/Img/time.png" style="width: 32px;height: 32px"></div>
+                <div style="float:left;">
+                    <p id="time1">00：00</p>
+                </div>
+            </div>
+
+            <div  class="layui-anim layui-anim-up" style="margin:auto;position:absolute;left:60%;top:30%;">
+                <div>
+                    <h1 align="center" >VPN180监控中心</h1>
+                    <h5 style="padding: 15px;" align="center">登录Admin管理员进入监控中心，调试详细参数</h5>
+                </div>
+                <div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><h2><i class="layui-icon layui-icon-username" style="padding: 5px"></i>账号:</h2></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="title" required   placeholder="请输入账号" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"><h2><i class="layui-icon layui-icon-password" style="padding: 5px"></i>密码:</h2></label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="password" required  placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux" id="forgetDiv"><a href=""><h2><u>忘记密码</u>?</h2></a></div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal " id="loginBtn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary" id="resetBtn">重置</button>
+                            <br>
+                            <a id="registeredA" href="javascript:"><h5 style="padding-top: 3%;float: left"><u>注册用户》</u></h5></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    getTime();
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#carousel'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'hover' //悬停显示箭头
+            ,autoplay:false //是否自动切换
+            ,anim: 'default' //切换动画方式
+            // ,interval:3000 //自动切换的时间
+            ,full:true
+        });
+    });
+
+    setInterval(function(){
+        getTime();
+    }, 1000);
+
+    $("#joinBtn").click(function () {
+        $(window).attr('location','http://127.0.0.1/test/public/index/index/layui');
+    });
+
+    $("#loginBtn").click(function () {
+        var cookie =$.cookie('admin');
+        var username = $("#title").val();
+        var password = $("#password").val();
+
+        if (cookie=="admin"){
+            layer.msg('Admin已有登录，正在跳转页面...', {
+                time: 2000,
+            });
+            setTimeout(function(){
+                $(window).attr('location','http://127.0.0.1/Websocket/Application/View/Layui');
+            },2000);
+            return;
+        }
+        if (username != "" && password != "") {
+
+            $.ajax({
+                type: "POST",
+                url: "../Controller/login.php",
+                data: {
+                    "title": username,
+                    "password": password,
+                },
+                name: "post",
+                success: function (data) {
+                    console.log(data);
+                    if (data == "true") {
+                        $.cookie('admin', username);
+                        layer.msg('登录成功', {
+                            time: 2000, //2s后自动关闭
+                        });
+                        setTimeout(function(){
+                            $(window).attr('location','http://127.0.0.1/Websocket/Application/View/Layui');
+                        },2000)
+                    } else {
+                        layer.msg('提示信息：<br>账号或密码输入不正确', {
+                            time: 20000, //20s后自动关闭.
+                            btn: ['明白了']
+                        });
+                    }
+                },
+                error: function (data) {
+                    layer.msg('提示信息：<br>未知错误', {
+                        time: 20000, //20s后自动关闭.
+                        btn: ['明白了']
+                    });
+                }
+            });
+        }else {
+            layer.msg('提示信息：<br>账号和密码输入不能为空', {
+                time: 20000, //20s后自动关闭
+                btn: ['明白了']
+            });
+        }
+    });
+
+    $("#resetBtn").click(function () {
+        $("#title").val(null);
+        $("#password").val(null);
+    });
+    $("#registeredBtn").click(function () {
+        registered();
+    });
+    $("#registeredA").click(function () {
+        registered();
+    });
+    function getTime() {
+        var time;
+        $.ajax({
+            type:"GET",
+            url:"http://127.0.0.1/test/public/index/index/getTime",
+            success:function(data){
+                time =data;
+                $("#time").text(time);
+                $("#time1").text(time);
+            }
+        });
+    }
+
+    function registered() {
+        layer.open({
+            type: 2 //弹框类型
+            ,title: '用户注册'
+            ,id:'registered'
+            ,area: ['450px', '560px']
+            ,shade: 0
+            ,content: 'http://127.0.0.1/test/public/index/index/registered'
+            ,btn: [ '取消注册']
+            ,btn1: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex
+            ,success: function(layero){
+                layer.setTop(layero);
+            }
+        });
+    }
+</script>
+</html>

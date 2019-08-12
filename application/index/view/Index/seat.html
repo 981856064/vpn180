@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>VPN180监控中心-坐席</title>
+    <link rel="icon" href="../../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
+    <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/Js/jquery.cookie.js"></script>
+    <script src="../../static/layui/layui.all.js"></script>
+    <script src="../../static/layui/lay/modules/layer.js"></script>
+    <script src="../../static/layui/lay/modules/jquery.js"></script>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<style type="text/css">
+    body {
+        height: 100%;width: 100%;
+        background: url('../../static/Img/3.jpg');
+        background-size:cover;
+    }
+</style>
+<body>
+<div id="mian">
+    <div style="height: 100% ;position:relative; padding-top: 5%;" >
+        <div style="width: 80%;height:80% ;margin:0 auto;">
+            <div style="width: 95%;height:100% ;margin:0 auto;float: left;padding-left: 3%;padding-right: 2%;">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend><p style="color: #fff;font-size: 15px;">VPN180 坐席</p></legend>
+                </fieldset>
+                <div style="background: #fff">
+                    <table class="layui-hide" id="seatTable" lay-filter="gateway"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <butoon class="layui-btn layui-btn-normal  layui-btn-sm" lay-event="edit"><i class="layui-icon">&#xe609;</i>详情</butoon>
+</script>
+<script>
+    //页面的分页功能暂未拓展 layui分页参数:page  limit
+    layui.use('table', function(){
+        var table = layui.table;
+        table.render({
+            elem: '#seatTable'
+            ,height: 473
+            ,title:"在线网关"
+            ,url:'http://127.0.0.1/test/public/index/index/getVPN'
+            ,skin: 'nob' //无边框风格
+            ,page: {
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                ,curr: 1 //设定初始在第 1 页
+                ,groups: 1 //只显示 1 个连续页码
+                ,first: false //不显示首页
+                ,last: false //不显示尾页
+            }
+            ,cols: [[
+                {field:'id', width:150, title: 'ID', sort: true}
+                ,{field:'name', width:150, title: '坐席名称'}
+                ,{field:'state', width:150, title: '坐席状态'}
+                ,{field:'audioInput',width:150, title:'音频输入信息', }
+                ,{field:'audioOutput',width:150, title:'音频输出信息', }
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+            ]],
+        });
+
+        //监听进入事件
+        table.on('tool(gateway)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data //获得当前行数据
+                ,layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'edit'){
+                //跳转页面
+                // window.location.href='show_visitors.html?id='+data.id;
+            }
+        });
+    });
+
+    layer.open({
+        type: 2
+        ,title: '异常日志'
+        ,offset: 'rb'
+        ,id: 'log'//防止重复弹出
+        ,btn: '关闭全部'
+        ,btnAlign: 'c' //按钮居中
+        ,closeBtn: 0 //关闭按钮隐藏
+        ,content: 'http://127.0.0.1/test/public/index/index/registered'
+        ,maxmin:true
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+            layer.closeAll();
+        }
+    });
+</script>
+</body>
+</html>
