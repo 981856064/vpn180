@@ -66,6 +66,14 @@ class Index extends Controller
     }
 
     /**
+     * 注册页面
+     * @return \think\response\View
+     */
+    public function log_bounced(){
+        return view();
+    }
+
+    /**
      * 注册用户
      * @param Request $request
      */
@@ -73,6 +81,10 @@ class Index extends Controller
         $array = $request->param('user');
         return($array);
     }
+
+        public function very_sorry(){
+            return view();
+        }
 
     /**
      * 获取本地服务器时间
