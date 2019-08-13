@@ -20,8 +20,11 @@
     </div>
 
 </div>
-</body>
+    </body>
 <script>
+    //获取页面传过来的id
+    var id = window.location.search.substring(4);
+    console.log("id:"+id);
     $("#returnBtn").click(function () {
         window.history.back(-1);
     })

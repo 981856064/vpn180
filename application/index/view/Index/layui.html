@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/layui/css/layui.css">
     <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
     <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/layui/layui.js"></script>
     <script src="../../static/Js/jquery.cookie.js"></script>
     <script src="../../static/layui/layui.all.js"></script>
     <script src="../../static/layui/lay/modules/layer.js"></script>
@@ -22,7 +23,7 @@
         <div class="layui-logo"><p>VPN180监控中心</p></div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="http://127.0.0.1/test/public/">中心首页</a></li>
+            <li class="layui-nav-item"><a href="http://127.0.0.1/test/public/index.php/index">中心首页</a></li>
             <li class="layui-nav-item"><a href="http://www.rioa.org.cn">研究院官网</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
@@ -53,19 +54,18 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree layui-bg-cyan">
                 <li class="layui-nav-item layui-nav-itemed ">
-                    <a class="" href="javascript:;">数据可视化</a>
+                    <a class="" href="javascript:;">数据相关</a>
                     <dl class="layui-nav-child layui-bg-red">
                         <dd id ="dd1"><a href="javascript:;">文件数据</a></dd>
                         <dd id ="dd2"><a href="javascript:;">异常日志</a></dd>
-                        <dd id ="dd3"><a href="javascript:;">用户设置</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">栏目二</a>
-                    <dl class="layui-nav-child ">
+                    <a href="javascript:;">用户相关</a>
+                    <dl class="layui-nav-child">
+                        <dd id ="dd3"><a href="javascript:;">用户设置</a></dd>
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
                 <li id="answerLi" class="layui-nav-item"><a href="javascript:;">疑难解答</a></li>
@@ -85,7 +85,6 @@
         © 2019
     </div>
 </div>
-<script src="../../static/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
@@ -100,10 +99,10 @@
         }
         //栏目跳转
         $("#dd1").click(function () {
-            document.getElementById("iframes").src="very_sorry";
+            document.getElementById("iframes").src="seat";
         })
         $("#dd2").click(function () {
-            document.getElementById("iframes").src="HC.html";
+            document.getElementById("iframes").src="very_sorry";
         })
         $("#dd3").click(function () {
             document.getElementById("iframes").src="channel.html";
@@ -230,6 +229,7 @@
             }
         })
     });
+
 </script>
 </body>
 </html>

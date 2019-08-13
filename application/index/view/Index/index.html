@@ -3,21 +3,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>VPN180监控中心</title>
-    <link rel="icon" href="static/Img/ioc.ioc" type="image/x-icon"/>
-    <link rel="stylesheet" href="static/Css/layui.css">
-    <script src="static/Js/jquery_v3.4.1.js"></script>
-    <script src="static/Js/jquery.cookie.js"></script>
-    <script src="static/layui/layui.all.js"></script>
-    <script src="static/layui/lay/modules/layer.js"></script>
-    <script src="static/layui/lay/modules/jquery.js"></script>
+    <link rel="icon" href="../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../static/Css/layui.css">
+    <script src="../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../static/Js/jquery.cookie.js"></script>
+    <script src="../static/layui/layui.all.js"></script>
+    <script src="../static/layui/lay/modules/layer.js"></script>
+    <script src="../static/layui/lay/modules/jquery.js"></script>
 </head>
 <style>
     #one{
-        background-image: url("static/Img/1.jpg");
+        background-image: url("../static/Img/1.jpg");
         background-size: 100% 100%;
     }
     #two{
-        background-image: url("static/Img/2.jpg");
+        background-image: url("../static/Img/2.jpg");
         background-size: 100% 100%;
     }
     h1{
@@ -45,7 +45,7 @@
         <!-- 主界面 -->
         <div id="one">
             <div style="padding: 3%">
-                <div style="float:left;padding-right: 5px"><img src="static/Img/time.png" style="width: 32px;height: 32px"></div>
+                <div style="float:left;padding-right: 5px"><img src="../static/Img/time.png" style="width: 32px;height: 32px"></div>
                 <div style="float:left;">
                     <p id="time">00：00</p>
                 </div>
@@ -62,7 +62,7 @@
         <!-- 登录界面 -->
         <div id="two">
             <div style="padding: 3%">
-                <div style="float:left;padding-right: 5px"><img src="static/Img/time.png" style="width: 32px;height: 32px"></div>
+                <div style="float:left;padding-right: 5px"><img src="../static/Img/time.png" style="width: 32px;height: 32px"></div>
                 <div style="float:left;">
                     <p id="time1">00：00</p>
                 </div>
@@ -123,7 +123,7 @@
     }, 1000);
 
     $("#joinBtn").click(function () {
-        $(window).attr('location','http://127.0.0.1/test/public/index/index/layui');
+        $(window).attr('location','http://127.0.0.1/test/public/index.php/index/layui');
     });
 
     $("#loginBtn").click(function () {
@@ -196,7 +196,7 @@
         var time;
         $.ajax({
             type:"GET",
-            url:"http://127.0.0.1/test/public/index/index/getTime",
+            url:"http://127.0.0.1/test/public/index/getTime",
             success:function(data){
                 time =data;
                 $("#time").text(time);
@@ -212,7 +212,7 @@
             ,id:'registered'
             ,area: ['450px', '560px']
             ,shade: 0
-            ,content: 'http://127.0.0.1/test/public/index/index/registered'
+            ,content: 'http://127.0.0.1/test/public/index/registered'
             ,btn: [ '取消注册']
             ,btn1: function(){
                 layer.closeAll();

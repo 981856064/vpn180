@@ -5,6 +5,12 @@ use think\Controller;
 use think\Db;
 use think\Request;
 use app\index\model\User as UserModel;
+
+/**
+ * 前台控制器
+ * Class Index
+ * @package app\index\controller
+ */
 class Index extends Controller
 {
     /**
@@ -33,8 +39,24 @@ class Index extends Controller
     {
         return view();
     }
+
     public function assistant()
     {
+        return view();
+    }
+
+    public function registered(){
+        return view();
+    }
+
+    public function log_bounced(){
+        return view();
+    }
+
+    public function very_sorry(){
+        return view();
+    }
+    public function detail_data(){
         return view();
     }
 
@@ -43,7 +65,8 @@ class Index extends Controller
      * @return array
      */
     function getVPN(){
-        $data='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常运行","audioInput":"正常运行","audioOutput":"正常运行","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常"},{"id":"50102","name":"vpn50103","state":"正常运行"},{"id":"50104","name":"vpn50103","state":"正常运行"}],"error":"\u672a\u77e5\u9519\u8bef"}';
+
+        $data='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常","audioInput":"正常","audioOutput":"正常","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常"},{"id":"50102","name":"vpn50103","state":"正常"},{"id":"50104","name":"vpn50103","state":"正常"}],"error":"\u672a\u77e5\u9519\u8bef"}';
         echo $data;
     }
 
@@ -58,22 +81,6 @@ class Index extends Controller
     }
 
     /**
-     * 注册页面
-     * @return \think\response\View
-     */
-    public function registered(){
-       return view();
-    }
-
-    /**
-     * 注册页面
-     * @return \think\response\View
-     */
-    public function log_bounced(){
-        return view();
-    }
-
-    /**
      * 注册用户
      * @param Request $request
      */
@@ -82,9 +89,6 @@ class Index extends Controller
         return($array);
     }
 
-        public function very_sorry(){
-            return view();
-        }
 
     /**
      * 获取本地服务器时间
