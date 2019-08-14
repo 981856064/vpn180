@@ -66,7 +66,7 @@ class Index extends Controller
      */
     function getVPN(){
 
-        $data='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常","audioInput":"正常","audioOutput":"正常","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常"},{"id":"50102","name":"vpn50103","state":"正常"},{"id":"50104","name":"vpn50103","state":"正常"}],"error":"\u672a\u77e5\u9519\u8bef"}';
+        $data='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常","audioInput":"正常","audioOutput":"正常","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常","audioInput":"正常","audioOutput":"正常"},{"id":"50102","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"},{"id":"50104","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"}],"error":"\u672a\u77e5\u9519\u8bef"}';
         echo $data;
     }
 

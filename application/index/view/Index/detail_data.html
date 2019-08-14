@@ -16,8 +16,30 @@
 
 </style>
 <body>
-    
+    <div class="layui-container">
+        <div style=" width: 33%;height:100%;float: left;">
+            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                <legend>收到的音频信息</legend>
+                <div></div>
+            </fieldset>
+        </div>
+        <div style=" width: 33%;height:100%;float: left;">
+            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                <legend>收到的音频信息</legend>
+                <div></div>
+            </fieldset>
+        </div>
+        <div style=" width: 33%;height:100%;float: left;">
+            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
+                <legend>收到的音频信息</legend>
+                <div></div>
+            </fieldset>
+        </div>
+    </div>
 <script>
+    //获取页面传过来的id
+    var id = window.location.search.substring(4);
+    console.log("id:"+id);
 </script>
 </body>
 </html>

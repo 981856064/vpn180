@@ -10,46 +10,44 @@
     <script src="../../static/layui/layui.js"></script>
 </head>
 <body style="direction: ltr;">
-<div align="center">
-    <ul class="layui-timeline">
+<div class="layui-container">
+    <i class="layui-icon layui-icon-down" style="color: dodgerblue"></i>最新
+    <ul class="layui-timeline" id="ul" style="padding-top: 1%">
         <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <b><i class="layui-icon layui-timeline-axis">&#xe63f;</i></b>
             <div class="layui-timeline-content layui-text">
                 <h5 class="layui-timeline-title">8月18日</h5>
                 <p>
-                    layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发
+                    layui 2.0 的一切准备工作似乎都已到位。发布之弦，
                 </p>
             </div>
         </li>
         <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <b><i class="layui-icon layui-timeline-axis">&#xe63f;</i></b>
             <div class="layui-timeline-content layui-text">
                 <h5 class="layui-timeline-title">8月16日</h5>
                 <p>杜甫的思想核心是儒家的仁政思想，他有“<em>致君尧舜上，再使风俗淳</em>”的宏伟抱负。个人最爱的名篇有：</p>
             </div>
         </li>
-        <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-            <div class="layui-timeline-content layui-text">
-                <h5 class="layui-timeline-title">8月15日</h5>
-                <p>
-                    55
-                </p>
-            </div>
-        </li>
-        <li class="layui-timeline-item">
-            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
-            <div class="layui-timeline-content layui-text">
-                <div class="layui-timeline-title">过去</div>
-            </div>
-        </li>
     </ul>
-
 </div>
+<button id="parentIndustry">test</button>
 </body>
 <script>
     $("#returnBtn").click(function () {
         window.history.back(-1);
     })
+    $("#parentIndustry").click(function(){
+        //回到HTML顶部
+        window.scrollTo(0,0);
+        //插入<li>
+        var myDate = new Date();
+        var mytime= myDate.toLocaleTimeString();
+        $("#ul").prepend(  " <li class='layui-timeline-item'>  <b><i class=\"layui-icon layui-timeline-axis\" style='color: red;'></i></b> <div class='layui-timeline-content layui-text'> <h5 class='layui-timeline-title'>"+mytime+"</h5> <p>异常信息 </p> </div></li>");
+    });
+
+    setInterval(function(){
+        $("#parentIndustry").click();
+    },3000);
 </script>
 </html>

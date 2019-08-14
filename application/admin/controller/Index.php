@@ -16,7 +16,9 @@ use think\Controller;
 class Index extends Controller
 {
     public function index(){
-        return "后台首页";
+        return view('layui');
     }
+
+
 
 }

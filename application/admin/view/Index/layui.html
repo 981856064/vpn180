@@ -20,7 +20,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header layui-bg-cyan">
-        <div class="layui-logo"><p>VPN180监控中心</p></div>
+        <div class="layui-logo"><p>VPN180-后台</p></div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="http://127.0.0.1/test/public/index.php/index">中心首页</a></li>
@@ -220,7 +220,7 @@
                     }
                     , btn2: function (index, layero) {
                         //按钮【取消】的回调
-                        layer.close(); //关闭弹窗
+                        layer.closeAll(); //关闭所有弹窗
                     }
                     , success: function (layero) {
                         // layer.setTop(layero); //置顶当前窗口
@@ -228,24 +228,6 @@
                 });
             }
         })
-    });
-
-    layer.open({
-        type: 2
-        ,title: '异常信息'
-        ,offset: 'lb'
-        ,id: 'log'//防止重复弹出
-        ,btn: '更多记录'
-        ,btnAlign: 'c' //按钮居中
-        ,closeBtn: 0 //关闭按钮隐藏
-        ,content: 'log_bounced'
-        ,maxmin:true
-        ,shade: 0 //不显示遮罩
-        ,yes: function(){
-            //更多Button 点击事件
-            // layer.closeAll();
-            document.getElementById("iframes").src="very_sorry";
-        }
     });
 </script>
 </body>
