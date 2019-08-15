@@ -11,49 +11,298 @@
     <script src="../../static/layui/layui.all.js"></script>
     <script src="../../static/layui/lay/modules/layer.js"></script>
     <script src="../../static/layui/lay/modules/jquery.js"></script>
+    <script src="../../static/Js/highcharts.js"></script>
+    <script src="../../static/Js/exporting.js"></script>
+    <script src="../../static/Js/oldie.js"></script>
+    <script src="../../static/Js/highcharts-zh_CN.js"></script>
 </head>
 <style type="text/css">
-
+    .div-father{
+        width: 33%;height:100%;float: left;
+    }
+    .div-big{
+        width: 29%;height: 47%;float: left;
+    }
+    .div-small{
+        background:#f8f8f8;height: 80%;width: 80%;padding: 10%;
+    }
+    .i-p{
+        font-size: 14px;float: left;padding-left: 5px
+    }
 </style>
-<body>
-    <div class="layui-container">
-        <div style=" width: 33%;height:100%;float: left;">
-            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-                <legend>收到的音频信息</legend>
-                <div style="width: 100%;height: 300px;background-color:darkgray">
-                    1
+<body style="background-color: #f8f8f8">
+<div class="layui-container">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this"><p id="seatId">坐席：00000</p></li>
+        </ul>
+        <div class="layui-tab-content"></div>
+    </div>
+        <div class="div-father">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <p  style="float: left">接收的音频</p>
+                    <a style="color: dodgerblue;float: right">>>详细</a>
                 </div>
-            </fieldset>
-            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-                <legend>发送的音频信息</legend>
-                <div style="width: 100%;height: 300px;background-color:darkgray">
-                    1
-                </div>
-            </fieldset>
-        </div>
-        <div style=" width: 33%;height:100%;float: left;">
-                数据收发时延
+                <div class="layui-card-body" style="width: 100%;height:250px;">
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > 状态：</p>
 
+                        </div>
+                    </div>
+                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > SQ数据：</p>
+                        </div>
+                    </div>
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" >ppt 数据：</p>
+                        </div>
+                    </div>
+                    <div style="width: 90%;height: 45%;float: left">
+                        <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
+                        <p class="i-p" >收到的音频数据：</p>
+                        ********************************************
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <p  style="float: left">有线数据</p>
+                    <a style="color: dodgerblue;float: right">>>详细</a>
+                </div>
+                <div class="layui-card-body" style="width: 100%;height:250px;">
+
+                </div>
+            </div>
         </div>
-        <div style=" width: 33%;height:100%;float: left;">
-            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-                <legend>有线数据</legend>
-                <div style="width: 100%;height: 300px;background-color:darkgray">
-1
+        <div class="div-father">
+                <div style="width: 80%;height: 270px;padding-left: 10%">
+                    <div id="container" style="max-width:100%;height:100%;"></div>
                 </div>
-            </fieldset>
-            <fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-                <legend>无线数据</legend>
-                <div style="width: 100%;height: 300px;background-color:darkgray">
-                    1
+                <div style="width: 80%;height: 270px;padding-left: 10%;padding-top: 20px">
+                    <div id="container1" style="max-width:100%;height:100%;"></div>
                 </div>
-            </fieldset>
+        </div>
+        <div class="div-father">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <p  style="float: left">发送的音频</p>
+                    <a style="color: dodgerblue;float: right">>>详细</a>
+                </div>
+                <div class="layui-card-body" style="width: 100%;height:250px;">
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > 状态：</p>
+
+                        </div>
+                    </div>
+                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > SQ数据：</p>
+                        </div>
+                    </div>
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" >ppt 数据：</p>
+                        </div>
+                    </div>
+                    <div style="width: 90%;height: 45%;float: left">
+                        <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
+                        <p class="i-p" >发送的音频数据：</p>
+                        ********************************************
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    <p  style="float: left">无线数据</p>
+                    <a style="color: dodgerblue;float: right">>>详细</a>
+                </div>
+                <div class="layui-card-body" style="width: 100%;height:250px;">
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > 状态：</p>
+
+                        </div>
+                    </div>
+                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > 调制度：</p>
+
+                        </div>
+                    </div>
+                    <div class="div-big" >
+                        <div class="div-small">
+                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" > 电平值：</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <script>
     //获取页面传过来的id
     var id = window.location.search.substring(4);
     console.log("id:"+id);
+    $("#seatId").html("坐席号："+id);
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+    function activeLastPointToolip(chart) {
+        var points = chart.series[0].points;
+        chart.tooltip.refresh(points[points.length -1]);
+    }
+
+    var chart = Highcharts.chart('container', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // 当前时间
+                            y = Math.floor(Math.random()*1000);          // 随机值
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: '数据接收延时时间',
+            style: {
+                color: '#1f1f1f',
+                "fontSize": "16px",
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2)+'ms';
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '平均延时',
+            marker: {
+                //小圆点
+                enabled: false
+            },
+            data: (function () {
+                // 生成随机值
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.floor(Math.random()*1000),
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+    var chart1 = Highcharts.chart('container1', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // 当前时间
+                            y = Math.floor(Math.random()*1000);          // 随机值
+                        series.addPoint([x, y], true, true);
+                        activeLastPointToolip(chart);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: '数据发送延时的时间',
+            style: {
+                color: '#1f1f1f',
+                "fontSize": "16px",
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2)+'ms';
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '实时延时',
+            marker: {
+                //小圆点
+                enabled: false
+            },
+            data: (function () {
+                // 生成随机值
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.floor(Math.random()*1000),
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
 </script>
 </body>
 </html>

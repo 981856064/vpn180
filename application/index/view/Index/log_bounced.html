@@ -31,7 +31,7 @@
         </li>
     </ul>
 </div>
-<button id="parentIndustry">test</button>
+<button id="parentIndustry" style="display:none;">test</button>
 </body>
 <script>
     var myDate =null;
@@ -45,7 +45,16 @@
         myDate = new Date();
         var mytime= myDate.toLocaleTimeString();
         var md5 = $.md5(mytime);
-        $("#ul").prepend(  " <li class='layui-timeline-item'> " +"<div class='layui-anim layui-anim-scaleSpring'><b><i class=\"layui-icon layui-timeline-axis\" style='color: red;'></i></b> <div class='layui-timeline-content layui-text'> <h5 class='layui-timeline-title'>"+mytime+"</h5> <p>"+md5+" </p> </div></div></li>");
+        //插入元素，无法自适应，注意内容长度，否则会出现底部的滑动块，影响美观
+        $("#ul").prepend(
+            "<li class='layui-timeline-item'> " +"" +
+            "<div class='layui-anim layui-anim-scaleSpring'>" +
+            "<b><i class='layui-icon layui-timeline-axis' style='color: red;'></i></b>" +
+            " <div class='layui-timeline-content layui-text'> " +
+            "<h5 class='layui-timeline-title'>"+mytime+"</h5> " +
+            "<p>"+md5+" </p> " +
+            "</div></div></li>"
+        );
     });
 
     setInterval(function(){

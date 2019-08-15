@@ -10,9 +10,8 @@
     <script src="../../static/Js/jquery_v3.4.1.js"></script>
     <script src="../../static/Js/jquery.cookie.js"></script>
     <script src="../../static/layui/layui.all.js"></script>
-    <script src="../../static/layui/lay/modules/layer.js"></script>
     <script src="../../static/layui/lay/modules/jquery.js"></script>
-    <script src="../../static/layui/layui.js"></script>
+    <script src="../../static/layui/lay/modules/layer.js"></script>
     <style>
         body .demo-class .layui-layer-title{background: #338bff; color:#fff; border: none;}
     </style>
@@ -82,7 +81,7 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © 2019
+        © 2019 网站备案号：
     </div>
 </div>
 <script>
@@ -142,6 +141,7 @@
                 layer.open({
                     type: 1
                     , id: 'login'
+                    ,icon:1
                     , skin: 'demo-class'
                     , title: 'Admin登录'
                     , area: ['430px', '290px']
@@ -230,39 +230,50 @@
         })
     });
 
-    layer.open({
+    var log_bounced= layer.open({
         type: 2
-        ,title: '异常信息  '+'<span class="layui-badge" id="spanNub" style="display:none;">0</span>'
-        ,area: ['350px', '400px']
+        ,title: '信息：'+'<span class="layui-badge" id="spanNub" style="display:none;">99+</span>'
+        ,anim: 2
+        ,area: ['300px', '400px']
         ,offset: 'lb'
         ,id: 'log'//防止重复弹出
-        ,btn: '更多记录'
+        ,icon:1
+        ,btn: '历史记录'
         ,btnAlign: 'c' //按钮居中
         ,closeBtn: 0 //关闭按钮隐藏
         ,content: 'log_bounced'
         ,maxmin:true
         ,shade: 0 //不显示遮罩
         ,yes: function(){
-            //更多Button 点击事件
-            // layer.closeAll();
+            //【更多记录】点击事件
+            document.getElementById("iframes").src="very_sorry";
+        }
+        ,btn1: function(){
+            //【更多记录】点击事件
             document.getElementById("iframes").src="very_sorry";
         }
         ,min: function(){
-            //最小化监听
+            //最小化
             $("#spanNub").show();
         }
         ,full: function() {
-            alert('最大化');
+            //最大化
         }
         ,restore: function() {
+            //还原
             $("#spanNub").hide();
+
         }
 
     });
 
-    var a=0;
+    var a=8;
     setInterval(function(){
-        $("#spanNub").text(a);
+        if (a<99){
+            $("#spanNub").text(a+"");
+        }else {
+            $("#spanNub").text("99+");
+        }
         a++;
     },3000);
 </script>
