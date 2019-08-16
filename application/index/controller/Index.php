@@ -81,8 +81,8 @@ class Index extends Controller
      * 测试数据：坐席
      * @return array
      */
-    function getVPN(){
-        $data='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常","audioInput":"正常","audioOutput":"正常","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常","audioInput":"正常","audioOutput":"正常"},{"id":"50102","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"},{"id":"50104","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"}],"error":"\u672a\u77e5\u9519\u8bef"}';
+    public function getVPN(){
+        $data ='{"code":"0","mag":null,"count":4,"data":[{"id":"50100","state":"正常","audioInput":"正常","audioOutput":"正常","name":"vpn50103"},{"id":"50101","name":"vpn50103","state":"出现异常","audioInput":"正常","audioOutput":"正常"},{"id":"50102","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"},{"id":"50104","name":"vpn50103","state":"正常","audioInput":"正常","audioOutput":"正常"}],"error":"\u672a\u77e5\u9519\u8bef"}';
         echo $data;
     }
 
@@ -102,9 +102,12 @@ class Index extends Controller
      */
     public function registeredUser(Request $request){
 
-        $username =  $request->param('user');
-        $password =$request->param('password');
+        $username = $request->param('user');
+        $password = $request->param('password');
         $user_array = Db::query('select * from user');
+
+        //邀请码校验
+        //******
 
         //验证用户名是否已经被注册
         foreach ($user_array as $value){
@@ -127,6 +130,16 @@ class Index extends Controller
             $this->error($user->getError(), true);
         }
     }
+
+    /**
+     * 用户登录
+     * @return null
+     */
+    public function userLogin(Request $request){
+
+        return null;
+    }
+
 
     /**
      * 获取本地服务器时间

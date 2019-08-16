@@ -27,7 +27,7 @@
         background:#f8f8f8;height: 80%;width: 80%;padding: 10%;
     }
     .i-p{
-        font-size: 14px;float: left;padding-left: 5px
+        float: left;padding-left: 5px
     }
 </style>
 <body style="background-color: #f8f8f8">
@@ -36,133 +36,142 @@
         <ul class="layui-tab-title">
             <li class="layui-this"><p id="seatId">坐席：00000</p></li>
         </ul>
-        <div class="layui-tab-content"></div>
-    </div>
-        <div class="div-father">
-            <div class="layui-card">
-                <div class="layui-card-header">
-                    <p  style="float: left">接收的音频</p>
-                    <a style="color: dodgerblue;float: right">>>详细</a>
-                </div>
-                <div class="layui-card-body" style="width: 100%;height:250px;">
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 状态：</p>
+        <div class="layui-tab-content">
+            <div style="width: 100%;height:100%;float: left;">
+                <p style="color: dodgerblue;padding-bottom: 10px;padding-right:10px;float: right;cursor:pointer" id="goBack_p">返回上一页《</p>
+            </div>
 
+            <div class="div-father">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <p  style="float: left">接收的音频</p>
+                        <a style="color: dodgerblue;float: right">>>详细</a>
+                    </div>
+                    <div class="layui-card-body" style="width: 100%;height:250px;">
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 状态：</p>
+
+                            </div>
+                        </div>
+                        <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > SQ数据：</p>
+                            </div>
+                        </div>
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" >ppt数据：</p>
+                            </div>
+                        </div>
+                        <div style="width: 90%;height: 45%;float: left">
+                            <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" >收到的音频数据：</p>
+                            ********************************************
                         </div>
                     </div>
-                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > SQ数据：</p>
-                        </div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <p  style="float: left">有线数据</p>
+                        <a style="color: dodgerblue;float: right">>>详细</a>
                     </div>
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" >ppt 数据：</p>
+                    <div class="layui-card-body" style="width: 100%;height:250px;">
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 状态：</p>
+
+                            </div>
                         </div>
-                    </div>
-                    <div style="width: 90%;height: 45%;float: left">
-                        <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
-                        <p class="i-p" >收到的音频数据：</p>
-                        ********************************************
                     </div>
                 </div>
             </div>
-            <div class="layui-card">
-                <div class="layui-card-header">
-                    <p  style="float: left">有线数据</p>
-                    <a style="color: dodgerblue;float: right">>>详细</a>
-                </div>
-                <div class="layui-card-body" style="width: 100%;height:250px;">
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 状态：</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="div-father">
+            <div class="div-father">
                 <div style="width: 80%;height: 270px;padding-left: 10%">
                     <div id="container" style="max-width:100%;height:100%;"></div>
                 </div>
                 <div style="width: 80%;height: 270px;padding-left: 10%;padding-top: 20px">
                     <div id="container1" style="max-width:100%;height:100%;"></div>
                 </div>
-        </div>
-        <div class="div-father">
-            <div class="layui-card">
-                <div class="layui-card-header">
-                    <p  style="float: left">发送的音频</p>
-                    <a style="color: dodgerblue;float: right">>>详细</a>
-                </div>
-                <div class="layui-card-body" style="width: 100%;height:250px;">
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 状态：</p>
-                        </div>
-                    </div>
-                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > SQ数据：</p>
-                        </div>
-                    </div>
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" >ppt 数据：</p>
-                        </div>
-                    </div>
-                    <div style="width: 90%;height: 45%;float: left">
-                        <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
-                        <p class="i-p" >发送的音频数据：</p>
-                        ********************************************
-                    </div>
-                </div>
             </div>
-            <div class="layui-card">
-                <div class="layui-card-header">
-                    <p  style="float: left">无线数据</p>
-                    <a style="color: dodgerblue;float: right">>>详细</a>
+            <div class="div-father">
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <p  style="float: left">发送的音频</p>
+                        <a style="color: dodgerblue;float: right">>>详细</a>
+                    </div>
+                    <div class="layui-card-body" style="width: 100%;height:250px;">
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 状态：</p>
+                            </div>
+                        </div>
+                        <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-star" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > SQ数据：</p>
+                            </div>
+                        </div>
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-code-circle" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" >ppt数据：</p>
+                            </div>
+                        </div>
+                        <div style="width: 90%;height: 45%;float: left">
+                            <i class="layui-icon layui-icon-headset" style="color: dodgerblue;float: left"></i>
+                            <p class="i-p" >发送的音频数据：</p>
+                            ********************************************
+                        </div>
+                    </div>
                 </div>
-                <div class="layui-card-body" style="width: 100%;height:250px;">
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 状态：</p>
-
-                        </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <p  style="float: left">无线数据</p>
+                        <a style="color: dodgerblue;float: right">>>详细</a>
                     </div>
-                    <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-console" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 调制度：</p>
+                    <div class="layui-card-body" style="width: 100%;height:250px;">
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-component" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 状态：</p>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="div-big" >
-                        <div class="div-small">
-                            <i class="layui-icon layui-icon-chart" style="color: dodgerblue;float: left"></i>
-                            <p class="i-p" > 电平值：</p>
+                        <div class="div-big" style="padding-left: 3%;padding-right: 3% ">
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-console" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 调制度：</p>
 
+                            </div>
+                        </div>
+                        <div class="div-big" >
+                            <div class="div-small">
+                                <i class="layui-icon layui-icon-chart" style="color: dodgerblue;float: left"></i>
+                                <p class="i-p" > 电平值：</p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <script>
     //获取页面传过来的id
     var id = window.location.search.substring(4);
     console.log("id:"+id);
     $("#seatId").html("坐席号："+id);
+
+    $("#goBack_p").click(function () {
+        window.history.back(-1);
+    })
 
     Highcharts.setOptions({
         global: {

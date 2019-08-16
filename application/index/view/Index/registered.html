@@ -183,8 +183,12 @@
                     console.log(data);
                     layer.msg('提示信息：<br>'+data.msg, {
                         time: 20000, //20s后自动关闭.
-                        btn: ['明白了']
+                        btn: ['明白了'],
+                        end: function(){
+                           //layer.msg销毁操作
+                        }
                     });
+
                 },
                 error: function (data) {
                     console.log(data.statusText);
