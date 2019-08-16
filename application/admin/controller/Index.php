@@ -19,6 +19,8 @@ class Index extends Controller
         return view('layui');
     }
 
-
+    public function channel(){
+        return view();
+    }
 
 }

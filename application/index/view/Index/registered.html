@@ -3,14 +3,14 @@
 <head>
     <title>VPN180监控中心</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="icon" href="../static/Img/ioc.ioc" type="image/x-icon"/>
-    <link rel="stylesheet" href="../static/layui/css/layui.css">
-    <link rel="stylesheet" href="../static/layui/css/modules/layer/default/layer.css">
-    <script src="../static/Js/jquery_v3.4.1.js"></script>
-    <script src="../static/Js/jquery.cookie.js"></script>
-    <script src="../static/layui/layui.all.js"></script>
-    <script src="../static/layui/lay/modules/layer.js"></script>
-    <script src="../static/layui/lay/modules/jquery.js"></script>
+    <link rel="icon" href="../../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
+    <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/Js/jquery.cookie.js"></script>
+    <script src="../../static/layui/layui.all.js"></script>
+    <script src="../../static/layui/lay/modules/layer.js"></script>
+    <script src="../../static/layui/lay/modules/jquery.js"></script>
 </head>
 <style>
     /*#mianDiv{*/
@@ -170,7 +170,7 @@
            //提交注册信息
             $.ajax({
                 type: "POST",
-                url: "http://127.0.0.1/test/public/index/index/registeredUser",
+                url: "registeredUser",
                 data: {
                     "user": user,
                     "password": password,
@@ -181,13 +181,14 @@
                 name: "post",
                 success: function (data) {
                     console.log(data);
-                    layer.msg('提示信息：<br>注册成功', {
+                    layer.msg('提示信息：<br>'+data.msg, {
                         time: 20000, //20s后自动关闭.
                         btn: ['明白了']
                     });
                 },
                 error: function (data) {
-                    layer.msg('提示信息：<br>未知错误', {
+                    console.log(data.statusText);
+                    layer.msg('提示信息：<br>错误：'+data.statusText, {
                         time: 20000, //20s后自动关闭.
                         btn: ['明白了']
                     });
