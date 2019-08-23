@@ -29,6 +29,7 @@ class Events
      */
     public static function onConnect($client_id)
     {
+        Gateway::sendToClient($client_id, "hi");
         echo $client_id."login....\r\n";
     }
 

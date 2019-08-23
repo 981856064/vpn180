@@ -12,6 +12,7 @@
     <script src="../../static/layui/layui.all.js"></script>
     <script src="../../static/layui/lay/modules/jquery.js"></script>
     <script src="../../static/layui/lay/modules/layer.js"></script>
+    <script src="../../static/layui/layui.js"></script>
     <style>
         body .demo-class .layui-layer-title{background: #338bff; color:#fff; border: none;}
     </style>
@@ -44,7 +45,7 @@
                     <dd><button class="layui-btn layui-btn-primary" id="set" align="center" style="width: 100%;height: 50%;border-style:hidden">安全设置</button></dd>
                 </dl>
             </li>
-            <li id="loginLi" class="layui-nav-item" style="padding-right: 30px"><h1 id="loginH5">Admin登录</h1></li>
+            <li id="loginLi" class="layui-nav-item" style="padding-right: 30px;"><h1 id="loginH5" style="cursor:pointer">Admin登录</h1></li>
         </ul>
     </div>
 
@@ -55,17 +56,17 @@
                 <li class="layui-nav-item layui-nav-itemed ">
                     <a class="" href="javascript:;">数据相关</a>
                     <dl class="layui-nav-child layui-bg-red">
-                        <dd id ="dd1"><a href="javascript:;">文件数据</a></dd>
+                        <dd id ="dd1"><a href="javascript:;">数据监控</a></dd>
                         <dd id ="dd2"><a href="javascript:;">异常日志</a></dd>
                     </dl>
                 </li>
                 <!--<li class="layui-nav-item">-->
-                    <!--<a href="javascript:;">用户相关</a>-->
-                    <!--<dl class="layui-nav-child">-->
-                        <!--<dd id ="dd3"><a href="javascript:;">用户设置</a></dd>-->
-                        <!--<dd><a href="javascript:;">列表一</a></dd>-->
-                        <!--<dd><a href="javascript:;">列表二</a></dd>-->
-                    <!--</dl>-->
+                <!--<a href="javascript:;">用户相关</a>-->
+                <!--<dl class="layui-nav-child">-->
+                <!--<dd id ="dd3"><a href="javascript:;">用户设置</a></dd>-->
+                <!--<dd><a href="javascript:;">列表一</a></dd>-->
+                <!--<dd><a href="javascript:;">列表二</a></dd>-->
+                <!--</dl>-->
                 <!--</li>-->
                 <li id="answerLi" class="layui-nav-item"><a href="javascript:;">疑难解答</a></li>
                 <li id="aboutLi" class="layui-nav-item"><a href="javascript:;">关于</a></li>
@@ -98,7 +99,7 @@
         }
         //栏目跳转
         $("#dd1").click(function () {
-            document.getElementById("iframes").src="seat";
+                document.getElementById("iframes").src="seat";
         })
         $("#dd2").click(function () {
             document.getElementById("iframes").src="very_sorry";
