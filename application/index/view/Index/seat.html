@@ -248,7 +248,7 @@
             /**  通讯错误时触发 */
             ws.onerror = function()
             {
-                layer.msg('msg：webSocket error...', {
+                layer.msg('msg：Server连接异常，正在重连...', {
                     time: 3000, //3s后自动关闭
                 });
             };

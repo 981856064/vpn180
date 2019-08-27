@@ -137,19 +137,18 @@ namespace GatewayData{
                     )
                 );
             }
-            $seat_data_array = array(
-                "id" =>"01",
-                "name"=>"坐席-01",
-                "status"=>"0", //0-正常，1-异常
-                "output"=>"0", //0-未开启，1-开始输出
-                "output_dBmw"=>"00", //输出（上传）电平值
-                "input"=>"1", //0-未开启，1-开始输入
-                "input_dBmw"=>"66", //输入（接收）电平值
-                "base_station"=>$base_station_array
-            );
             $seat_array = array();
-            for ($i=0;$i<3;$i++){
-                $seat_array[$i]=$seat_data_array;
+            for ($i=0;$i<4;$i++){
+                $seat_array[$i]= array(
+                    "id" =>"0".$i,
+                    "name"=>"坐席-0".$i,
+                    "status"=>"0", //0-正常，1-异常
+                    "output"=>"0", //0-未开启，1-开始输出
+                    "output_dBmw"=>"00", //输出（上传）电平值
+                    "input"=>"1", //0-未开启，1-开始输入
+                    "input_dBmw"=>"66", //输入（接收）电平值
+                    "base_station"=>$base_station_array
+                );
             }
             $json_string = json_encode($seat_array, JSON_UNESCAPED_UNICODE);
             return $json_string;

@@ -120,7 +120,7 @@
             /** 尝试重新连接之前要延迟的毫秒数 */
             reconnectInterval: 1000,
             /** 延迟重连接尝试的最大毫秒数 */
-            maxReconnectInterval: 30000,
+            maxReconnectInterval: 10000,
             /** 重新连接延迟的增加速率。允许重新连接尝试在问题持续时后退 */
             reconnectDecay: 1.5,
 
