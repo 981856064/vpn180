@@ -29,9 +29,6 @@ class Events
      */
     public static function onConnect($client_id)
     {
-        $get_data = new GetData();
-        $json = $get_data->testJson();
-        Gateway::sendToClient($client_id, $json);
         echo $client_id."login....\r\n";
     }
 
@@ -80,6 +77,10 @@ class Events
     public static function onWorkerStart()
     {
         Timer::add(1, function(){
+            echo 1;
+            $get_data = new GetData();
+            $json = $get_data->testJson();
+            Gateway::sendToAll($json);
 //
 //            $events = new Events();
 //            //获取挂载的网关设备

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
     <script src="../../static/Js/jquery_v3.4.1.js"></script>
     <script src="../../static/Js/jquery.cookie.js"></script>
+    <script src="../../static/Js/reconnecting-websocket.js"></script>
     <script src="../../static/layui/layui.all.js"></script>
     <script src="../../static/layui/lay/modules/layer.js"></script>
     <script src="../../static/layui/lay/modules/jquery.js"></script>
@@ -37,7 +38,16 @@
     </div>
 </div>
 <script>
-
+    /**
+     * @param sum 状态 0-正常 1-异常
+     */
+    function spanStatus(sum) {
+        if(sum==0){
+            return " <span class=\"layui-badge-dot layui-bg-blue\"></span>";
+        }else {
+            return " <span class=\"layui-badge-dot\"></span>";
+        }
+    }
     /**
      *渲染坐席数据传输状态
      * @param sum 状态 0-未输出/输入数据  1-正在输出/输入数据
@@ -48,11 +58,11 @@
         if (sum==1){
             return "  <div class=\"layui-anim layui-anim-fadein layui-anim-loop\" style=\"padding-left:50%\">\n" +
                 "           <span class=\"layui-badge layui-bg-blue\" >"+dBmw+"</span>\n" +
-                "     </div>"
+                "     </div>";
         }else {
             return "  <div style=\"padding-left:50%\">\n" +
                 "           <span class=\"layui-badge layui-bg-gray\" >"+dBmw+"</span>\n" +
-                "     </div>"
+                "     </div>";
         }
     }
     /**
@@ -75,7 +85,7 @@
             "                                        </div>\n" +
             "                                        <div style=\"float: left\">\n" +
             "                                            <p style=\"padding-left: 5px;float: left\">\n" +
-            "                                                 <!--坐席名称-->\n"+obj.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span>\n" +
+            "                                                 <!--坐席名称-->\n"+obj.name+spanStatus(obj.status)+
             "                                            </p>\n" +
             "                                        </div>\n" +
             "                                    </div>\n" +
@@ -111,28 +121,27 @@
     /**
      * 渲染基站数据
      * @param obj
-     * @param i
      */
     function addBaseStation(obj,i) {
         for (var j=0;j<obj.length;j++){
             //拼接div的id
             var divName = "#channelDiv"+i;
-            $(divName).append("       <div style=\"width: 11%;height: 100%;float: left;padding-right: 1%\">\n" +
+            $(divName).append("       <div style=\"width: 12%;height: 100%;float: left;padding-right: 1%\">\n" +
                 "                                        <div style=\"width: 100%;height: 100%;background:url('../../static/Img/transparent_black.png')\">\n" +
                 "                                            <div style=\"width: 100%;height: 33%\">\n" +
                 "                                                <div style=\"width: 98%;height: 50%\">\n" +
-                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].main.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[j].main.name+spanStatus(obj[j].main.status)+
                 "                                                </div>\n" +
                 "                                                <div style=\"width: 95%;height: 50%;\">\n" +
                 "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
                 "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
                 "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
                 "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-                "                                                                 <!-- 追加动画效果-input输入 -->\n" +animation(obj[i].main.input , obj[i].main.input_dBmw) +
+                "                                                                 <!-- 追加动画效果-input输入 -->\n" +animation(obj[j].main.input , obj[j].main.input_dBmw) +
                 "                                                            </div>\n" +
                 "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
                 "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-                "                                                                 <!-- 追加动画效果-output输出 -->\n" +animation(obj[i].main.output, obj[i].main.output_dBmw) +
+                "                                                                 <!-- 追加动画效果-output输出 -->\n" +animation(obj[j].main.output, obj[j].main.output_dBmw) +
                 "                                                            </div>\n" +
                 "                                                        </div>\n" +
                 "                                                    </div>\n" +
@@ -140,18 +149,18 @@
                 "                                            </div>\n" +
                 "                                            <div style=\"width: 100%;height: 33%\">\n" +
                 "                                                <div style=\"width: 98%;height: 50%\">\n" +
-                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].vice.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[j].vice.name+spanStatus(obj[j].vice.status)+
                 "                                                </div>\n" +
                 "                                                <div style=\"width: 95%;height: 50%;\">\n" +
                 "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
                 "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
                 "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
                 "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-                "                                                                   <!-- 追加动画效果-input输入 -->\n" +animation(obj[i].vice.input, obj[i].vice.input_dBmw) +
+                "                                                                   <!-- 追加动画效果-input输入 -->\n" +animation(obj[j].vice.input, obj[j].vice.input_dBmw) +
                 "                                                            </div>\n" +
                 "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
                 "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-                "                                                                   <!-- 追加动画效果-output输出 -->\n" +animation(obj[i].vice.output, obj[i].vice.output_dBmw) +
+                "                                                                   <!-- 追加动画效果-output输出 -->\n" +animation(obj[j].vice.output, obj[j].vice.output_dBmw) +
                 "                                                            </div>\n" +
                 "                                                        </div>\n" +
                 "                                                    </div>\n" +
@@ -159,12 +168,12 @@
                 "                                            </div>\n" +
                 "                                            <div style=\"width: 100%;height: 33%\">\n" +
                 "                                                <div style=\"width: 98%;height: 50%\">\n" +
-                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].wifi.name+"<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[j].wifi.name+spanStatus(obj[j].wifi.status)+
                 "                                                </div>\n" +
                 "                                                <div style=\"width: 95%;height: 50%;\">\n" +
                 "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
                 "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%;text-align: center\">\n" +
-                "                                                            <p style=\"font-size: 12px\">"+obj[i].wifi.data1+" | "+obj[i].wifi.data2+" | "+obj[i].wifi.data3+"</p>\n" +
+                "                                                            <p style=\"font-size: 12px\">"+obj[j].wifi.data1+" | "+obj[j].wifi.data2+" | "+obj[j].wifi.data3+"</p>\n" +
                 "                                                        </div>\n" +
                 "                                                    </div>\n" +
                 "                                                </div>\n" +
@@ -201,24 +210,28 @@
     }
 
     $(document).ready(function () {
+        /** 检验浏览器是否支持websocket */
         if ("WebSocket" in window) {
-            // 打开一个 web socket
-            var ws = new WebSocket("ws://localhost:9090");
 
-            //  连接建立时触发
+            var url = "ws://localhost:9090";
+
+            /** 新建websocket连接   ReconnectingWebSocket-》使用javascript封闭的websocket库 */
+            var ws = new ReconnectingWebSocket(url);
+
+            /** 连接建立时触发 */
             ws.onopen = function()
             {
-                ws.send("1");
+                ws.send("test");
             };
 
-            //  客户端接收服务端数据时触发
+            /** 客户端接收服务端数据时触发 */
             ws.onmessage = function (evt)
             {
-                console.log(evt.data);
                 $("#seatContentDiv").remove();
                 $("#containerDiv").append("   <div id=\"seatContentDiv\" class=\"layui-tab-content\" style=\"\"></div>");
                 if (evt.data!=null){
                     var data = JSON.parse(evt.data);
+                    console.log(data);
                     for (var i=0;i<data.length;i++){
                         addSeatDiv(data[i],i);
                         addBaseStation(data[i].base_station,i);
@@ -226,13 +239,13 @@
                 }
             };
 
-            //	连接关闭时触发
+            /** 连接关闭时触发 */
             ws.onclose = function()
             {
                 // console.log("webSocket on close ...");
             };
 
-            //通讯错误时触发
+            /**  通讯错误时触发 */
             ws.onerror = function()
             {
                 layer.msg('msg：webSocket error...', {
@@ -241,14 +254,15 @@
             };
 
         } else {
-            // 浏览器不支持 WebSocket
-            console.log("该浏览器不支持 WebSocket");
+            layer.msg('msg：该浏览器不支持 WebSocket！', {
+                time: 3000, //3s后自动关闭
+            });
         }
 
-        // 监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+        /**  监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端可能会抛异常。 */
         window.onbeforeunload = function() {
             ws.close();
-        }
+        };
     });
 
 </script>

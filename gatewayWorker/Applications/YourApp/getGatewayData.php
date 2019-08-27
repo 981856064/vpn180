@@ -104,40 +104,13 @@ namespace GatewayData{
         //test测试
         public function testJson(){
 
-            $data_array = array(
-                "id"=>"001",
-                "state"=>"0", //0-正常，1-异常
-                "name"=>"基站-z",
-                "output"=>"1", //0-未开启，1-开始输出
-                "output_dBmw"=>"66", //输出（上传）电平值
-                "input"=>"0", //0-未开启，1-开始输入
-                "input_dBmw"=>"00", //输入（接收）电平值
-            );
-            $data_array2 = array(
-                "id"=>"001",
-                "state"=>"0", //0-正常，1-异常
-                "name"=>"基站-f",
-                "output"=>"0", //0-未开启，1-开始输出
-                "output_dBmw"=>"00", //输出（上传）电平值
-                "input"=>"1", //0-未开启，1-开始输入
-                "input_dBmw"=>"66", //输入（接收）电平值
-            );
-            $wifi_array = array(
-                "id" =>"002",
-                "name"=>"WIFI-1",
-                "state"=>"0", //0-正常，1-异常
-                "data1"=>"000",
-                "data2"=>"000",
-                "data3"=>"000",
-                "data4"=>"000",
-            );
             $base_station_array = array(
             );
             for ($i=0;$i<3;$i++){
                 $base_station_array[$i] = array(
                     "main"=>array(
                         "id"=>"001",
-                        "state"=>"0", //0-正常，1-异常
+                        "status"=>"1", //0-正常，1-异常
                         "name"=>"基站-".$i,
                         "output"=>"1", //0-未开启，1-开始输出
                         "output_dBmw"=>"66", //输出（上传）电平值
@@ -146,7 +119,7 @@ namespace GatewayData{
                     ),
                     "vice"=>array(
                         "id"=>"001",
-                        "state"=>"0", //0-正常，1-异常
+                        "status"=>"0", //0-正常，1-异常
                         "name"=>"基站-f".$i,
                         "output"=>"0", //0-未开启，1-开始输出
                         "output_dBmw"=>"00", //输出（上传）电平值
@@ -156,7 +129,7 @@ namespace GatewayData{
                     "wifi"=>array(
                         "id" =>"002",
                         "name"=>"WIFI-".$i,
-                        "state"=>"0", //0-正常，1-异常
+                        "status"=>"0", //0-正常，1-异常
                         "data1"=>"00".$i,
                         "data2"=>"000".$i,
                         "data3"=>"000".$i,
@@ -167,7 +140,7 @@ namespace GatewayData{
             $seat_data_array = array(
                 "id" =>"01",
                 "name"=>"坐席-01",
-                "state"=>"0", //0-正常，1-异常
+                "status"=>"0", //0-正常，1-异常
                 "output"=>"0", //0-未开启，1-开始输出
                 "output_dBmw"=>"00", //输出（上传）电平值
                 "input"=>"1", //0-未开启，1-开始输入
