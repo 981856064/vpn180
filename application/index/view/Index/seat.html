@@ -17,10 +17,9 @@
 </head>
 <style type="text/css">
     body {
-        background: url("../../static/Img/bg_sky.jpg");
+        background: url("../../static/Img/bg_night.jpg");
         height: 100%;width: 100%;
         background-size:cover;
-        /*background-color: #f8f8f8;*/
     }
     p{
         font-size: 14px;
@@ -28,148 +27,55 @@
     }
 </style>
 <body>
-<div style="width: 1150px;padding: 0 2% 0 2%;margin:0 auto;">
-    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+<div style="width: 1150px;height:700px;padding: 0 2% 0 2%;margin:0 auto;">
+    <div id="containerDiv" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
         <ul class="layui-tab-title">
             <li class="layui-this">坐席监控</li>
         </ul>
         <div id="seatContentDiv" class="layui-tab-content" style="">
-            <div style="width: 1140px;height: 100%;padding: 5px 10px 5px 10px;background:url('../../static/Img/transparent.png')">
-                <div class="layui-field-box" style="background:url('../../static/Img/transparent_black.png')">
-                    <div style="width: 100%;height: 150px;"><!--background-color: #fff;-->
-                        <div style="width: 12%;height: 150px;float: left">
-                            <div style="width: 96%;height: 140px;padding: 5px 2%  5px 2%;">
-                                <div style="width: 100%;height: 100%;">
-                                    <div style="width: 100%;height: 30%;display:flex;justify-content:center;align-items:center;float: left">
-                                        <div style="background-color: #cce5ff;border-radius:50%;width:25px;height:25px;float: left">
-                                            <p style="font-size: 16px;padding-top: 5px;color: #fff" align="center">1</p>
-                                        </div>
-                                        <div style="float: left">
-                                            <p style="padding-left: 5px;float: left">
-                                                坐席-1 <span class="layui-badge-dot layui-bg-blue"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div style="width: 100%;float: left;height: 62%">
-                                        <div style="width: 98%;height: 30%;padding: 0 1% 0 1%">
-                                            <p style="float: left;padding-bottom: 5px;padding-left: 10%"> <i class="layui-icon layui-icon-download-circle"></i> Rx：</p>
-                                            <!-- 追加动画效果 -->
-                                            <div class="layui-anim layui-anim-fadein layui-anim-loop" style="padding-left:50%">
-                                                <span class="layui-badge layui-bg-blue" >00</span>
-                                            </div>
-                                        </div>
-                                        <div style="width: 98%;height: 30%;padding: 0 1% 0 1%">
-                                            <p style="float: left;padding-bottom: 5px;padding-left: 10%"><i class="layui-icon layui-icon-upload-drag"></i> Tx：</p>
-                                            <div style="padding-left:50%">
-                                                <span class="layui-badge layui-bg-gray" style="">00</span>
-                                            </div>
-
-                                        </div>
-                                        <div style="width: 98%;height: 30%;padding: 0 1% 0 1%">
-                                            <p style="color: dodgerblue;cursor:pointer">详情</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="width: 87%;height: 150px;float: left;border:1px solid #f8f8f8" >
-                            <div style="width: 98%;height: 140px;padding: 5px 1%  5px 1%;">
-                                <div id="channelDiv" style="width: 100%;height: 100%;display:flex; justify-content:center;  align-items:center;">
-                                    <div style="width: 11%;height: 100%;float: left;padding-right: 1%">
-                                        <div style="width: 100%;height: 100%;background:url('../../static/Img/transparent_black.png')">
-                                            <div style="width: 100%;height: 33%">
-                                                <div style="width: 98%;height: 50%">
-                                                    <p style="font-size: 14px;padding-top: 5px;padding-left:5% ">基站-001<span class="layui-badge-dot layui-bg-blue"></span></p>
-                                                </div>
-                                                <div style="width: 95%;height: 50%;">
-                                                    <div style="height: 50%;width: 100%;">
-                                                        <div style="height: 96%;width: 100%;padding-top: 4%">
-                                                            <div align="center" style="width: 50%;float: left">
-                                                                <p style="float: left"><i class="layui-icon layui-icon-download-circle"></i></p>
-                                                                <!--追加动画-->
-                                                                <div class="layui-anim layui-anim-fadein layui-anim-loop">
-                                                                    <span id="spantest" class="layui-badge layui-bg-blue">000</span>
-                                                                </div>
-
-                                                            </div>
-                                                            <div align="center" style="width: 50%;float: left">
-                                                                <p style="float: left"><i class="layui-icon layui-icon-upload-drag"></i></p>
-                                                                <!--追加动画-->
-                                                                <div class="">
-                                                                    <span id="" class="layui-badge layui-bg-gray">000</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="width: 100%;height: 33%">
-                                                <div style="width: 98%;height: 50%">
-                                                    <p style="font-size: 14px;padding-top: 5px;padding-left:5% ">基站-001<span class="layui-badge-dot layui-bg-blue"></span></p>
-                                                </div>
-                                                <div style="width: 95%;height: 50%;">
-                                                    <div style="height: 50%;width: 100%;">
-                                                        <div style="height: 96%;width: 100%;padding-top: 4%">
-                                                            <div align="center" style="width: 50%;float: left">
-                                                                <p style="float: left"><i class="layui-icon layui-icon-download-circle"></i></p>
-                                                                <!--追加动画-->
-                                                                <div class="layui-anim layui-anim-fadein layui-anim-loop">
-                                                                    <span class="layui-badge layui-bg-blue">000</span>
-                                                                </div>
-
-                                                            </div>
-                                                            <div align="center" style="width: 50%;float: left">
-                                                                <p style="float: left"><i class="layui-icon layui-icon-upload-drag"></i></p>
-                                                                <!--追加动画-->
-                                                                <div class="">
-                                                                    <span class="layui-badge layui-bg-gray">000</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="width: 100%;height: 33%">
-                                                <div style="width: 98%;height: 50%">
-                                                    <p style="font-size: 14px;padding-top: 5px;padding-left:5% ">WIFI<span class="layui-badge-dot layui-bg-blue"></span></p>
-                                                </div>
-                                                <div style="width: 95%;height: 50%;">
-                                                    <div style="height: 50%;width: 100%;">
-                                                        <div style="height: 96%;width: 100%;padding-top: 4%;text-align: center">
-                                                            <p style="font-size: 12px">666 | 50% | 666</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 <script>
-    for (var i=0;i<7;i++){
+
+    /**
+     *渲染坐席数据传输状态
+     * @param sum 状态 0-未输出/输入数据  1-正在输出/输入数据
+     * @param dBmw 电平值
+     * @returns {string}
+     */
+    function animation(sum , dBmw) {
+        if (sum==1){
+            return "  <div class=\"layui-anim layui-anim-fadein layui-anim-loop\" style=\"padding-left:50%\">\n" +
+                "           <span class=\"layui-badge layui-bg-blue\" >"+dBmw+"</span>\n" +
+                "     </div>"
+        }else {
+            return "  <div style=\"padding-left:50%\">\n" +
+                "           <span class=\"layui-badge layui-bg-gray\" >"+dBmw+"</span>\n" +
+                "     </div>"
+        }
+    }
+    /**
+     * 渲染坐席数据
+     * @param obj
+     * @param i
+     */
+    function addSeatDiv(obj,i) {
+        // console.log(obj);
         var bgColor = getRandomColor();
-        $("#seatContentDiv").append("     <div style=\"width: 1140px;height: 100%;padding: 5px 10px 5px 10px;background:url('../../static/Img/transparent.png')\">\n" +
+        $("#seatContentDiv").append("   <div style=\"width: 1140px;height: 100%;padding: 5px 10px 5px 10px;background:url('../../static/Img/transparent.png')\">\n" +
             "                <div class=\"layui-field-box\" style=\"background:url('../../static/Img/transparent_black.png')\">\n" +
             "                    <div style=\"width: 100%;height: 150px;\"><!--background-color: #fff;-->\n" +
-            "                        <div style=\"width: 10%;height: 150px;float: left\">\n" +
+            "                        <div style=\"width: 12%;height: 150px;float: left\">\n" +
             "                            <div style=\"width: 96%;height: 140px;padding: 5px 2%  5px 2%;\">\n" +
             "                                <div style=\"width: 100%;height: 100%;\">\n" +
             "                                    <div style=\"width: 100%;height: 30%;display:flex;justify-content:center;align-items:center;float: left\">\n" +
-            "                                        <div style=\"background-color: #cce5ff;border-radius:50%;width:25px;height:25px;float: left\">\n" +
-            "                                            <p style=\"font-size: 16px;padding-top: 5px;color: #fff\" align=\"center\">1</p>\n" +
+            "                                        <div style=\"background-color: "+bgColor+";border-radius:50%;width:25px;height:25px;float: left\">\n" +
+            "                                            <p style=\"font-size: 16px;padding-top: 5px;color: #fff\" align=\"center\">"+obj.id+"</p>\n" +
             "                                        </div>\n" +
             "                                        <div style=\"float: left\">\n" +
             "                                            <p style=\"padding-left: 5px;float: left\">\n" +
-            "                                                坐席-1 <span class=\"layui-badge-dot layui-bg-blue\"></span>\n" +
+            "                                                 <!--坐席名称-->\n"+obj.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span>\n" +
             "                                            </p>\n" +
             "                                        </div>\n" +
             "                                    </div>\n" +
@@ -177,178 +83,101 @@
             "                                    <div style=\"width: 100%;float: left;height: 62%\">\n" +
             "                                        <div style=\"width: 98%;height: 30%;padding: 0 1% 0 1%\">\n" +
             "                                            <p style=\"float: left;padding-bottom: 5px;padding-left: 10%\"> <i class=\"layui-icon layui-icon-download-circle\"></i> Rx：</p>\n" +
-            "                                            <!-- 追加动画效果 -->\n" +
-            "                                            <div class=\"layui-anim layui-anim-fadein layui-anim-loop\" style=\"padding-left:50%\">\n" +
-            "                                                <span class=\"layui-badge layui-bg-blue\" >00</span>\n" +
-            "                                            </div>\n" +
+            "                                            <!-- 追加动画效果-input输入 -->\n" +animation(obj.input , obj.input_dBmw) +
             "                                        </div>\n" +
             "                                        <div style=\"width: 98%;height: 30%;padding: 0 1% 0 1%\">\n" +
             "                                            <p style=\"float: left;padding-bottom: 5px;padding-left: 10%\"><i class=\"layui-icon layui-icon-upload-drag\"></i> Tx：</p>\n" +
-            "                                            <div style=\"padding-left:50%\">\n" +
-            "                                                <span class=\"layui-badge layui-bg-gray\" style=\"\">00</span>\n" +
-            "                                            </div>\n" +
-            "\n" +
+            "                                            <!-- 追加动画效果-output输出 -->\n" +animation(obj.output , obj.output_dBmw) +
             "                                        </div>\n" +
             "                                        <div style=\"width: 98%;height: 30%;padding: 0 1% 0 1%\">\n" +
-            "                                            <p style=\"color: dodgerblue;cursor:pointer\">详情</p>\n" +
+            "                                            <p style=\"width: 30px;color: dodgerblue;cursor:pointer\">详情</p>\n" +
             "                                        </div>\n" +
             "                                    </div>\n" +
             "                                </div>\n" +
             "                            </div>\n" +
             "                        </div>\n" +
             "\n" +
-            "                        <div style=\"width: 89%;height: 150px;float: left;border:1px solid #f8f8f8\" >\n" +
+            "                        <div style=\"width: 87%;height: 150px;float: left;border:1px solid #f8f8f8\" >\n" +
             "                            <div style=\"width: 98%;height: 140px;padding: 5px 1%  5px 1%;\">\n" +
-            "                                <div id=\"channelDiv\" style=\"width: 100%;height: 100%;display:flex; justify-content:center;  align-items:center;\">\n" +
-            "                                    <div style=\"width: 11%;height: 100%;float: left;padding-right: 1%\">\n" +
-            "                                        <div style=\"width: 100%;height: 100%;background:url('../../static/Img/transparent_black.png')\">\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">基站-001<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"layui-anim layui-anim-fadein layui-anim-loop\">\n" +
-            "                                                                    <span id=\"spantest\" class=\"layui-badge layui-bg-blue\">000</span>\n" +
-            "                                                                </div>\n" +
-            "\n" +
-            "                                                            </div>\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"\">\n" +
-            "                                                                    <span id=\"\" class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">基站-001<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"layui-anim layui-anim-fadein layui-anim-loop\">\n" +
-            "                                                                    <span class=\"layui-badge layui-bg-blue\">000</span>\n" +
-            "                                                                </div>\n" +
-            "\n" +
-            "                                                            </div>\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"\">\n" +
-            "                                                                    <span class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">WIFI<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%;text-align: center\">\n" +
-            "                                                            <p style=\"font-size: 12px\">666 | 50% | 666</p>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                        </div>\n" +
-            "                                    </div>\n" +
+            "                                <div id=\"channelDiv"+i+"\" style=\"width: 100%;height: 100%;display:flex; justify-content:center;  align-items:center;\">\n"+
             "                                </div>\n" +
             "                            </div>\n" +
             "                        </div>\n" +
             "                    </div>\n" +
             "                </div>\n" +
             "            </div>");
+
+    }
+    /**
+     * 渲染基站数据
+     * @param obj
+     * @param i
+     */
+    function addBaseStation(obj,i) {
+        for (var j=0;j<obj.length;j++){
+            //拼接div的id
+            var divName = "#channelDiv"+i;
+            $(divName).append("       <div style=\"width: 11%;height: 100%;float: left;padding-right: 1%\">\n" +
+                "                                        <div style=\"width: 100%;height: 100%;background:url('../../static/Img/transparent_black.png')\">\n" +
+                "                                            <div style=\"width: 100%;height: 33%\">\n" +
+                "                                                <div style=\"width: 98%;height: 50%\">\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].main.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                </div>\n" +
+                "                                                <div style=\"width: 95%;height: 50%;\">\n" +
+                "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
+                "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
+                "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
+                "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
+                "                                                                 <!-- 追加动画效果-input输入 -->\n" +animation(obj[i].main.input , obj[i].main.input_dBmw) +
+                "                                                            </div>\n" +
+                "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
+                "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
+                "                                                                 <!-- 追加动画效果-output输出 -->\n" +animation(obj[i].main.output, obj[i].main.output_dBmw) +
+                "                                                            </div>\n" +
+                "                                                        </div>\n" +
+                "                                                    </div>\n" +
+                "                                                </div>\n" +
+                "                                            </div>\n" +
+                "                                            <div style=\"width: 100%;height: 33%\">\n" +
+                "                                                <div style=\"width: 98%;height: 50%\">\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].vice.name+" <span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                </div>\n" +
+                "                                                <div style=\"width: 95%;height: 50%;\">\n" +
+                "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
+                "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
+                "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
+                "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
+                "                                                                   <!-- 追加动画效果-input输入 -->\n" +animation(obj[i].vice.input, obj[i].vice.input_dBmw) +
+                "                                                            </div>\n" +
+                "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
+                "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
+                "                                                                   <!-- 追加动画效果-output输出 -->\n" +animation(obj[i].vice.output, obj[i].vice.output_dBmw) +
+                "                                                            </div>\n" +
+                "                                                        </div>\n" +
+                "                                                    </div>\n" +
+                "                                                </div>\n" +
+                "                                            </div>\n" +
+                "                                            <div style=\"width: 100%;height: 33%\">\n" +
+                "                                                <div style=\"width: 98%;height: 50%\">\n" +
+                "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[i].wifi.name+"<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
+                "                                                </div>\n" +
+                "                                                <div style=\"width: 95%;height: 50%;\">\n" +
+                "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
+                "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%;text-align: center\">\n" +
+                "                                                            <p style=\"font-size: 12px\">"+obj[i].wifi.data1+" | "+obj[i].wifi.data2+" | "+obj[i].wifi.data3+"</p>\n" +
+                "                                                        </div>\n" +
+                "                                                    </div>\n" +
+                "                                                </div>\n" +
+                "                                            </div>\n" +
+                "                                        </div>\n" +
+                "                                    </div>");
+        }
     }
 
-    for (var i=0;i<0;i++){
-        var bgColor = getRandomColor();
-        $("#channelDiv").append("       <div style=\"width: 11%;height: 100%;float: left;padding-right: 1%\">\n" +
-            "                                        <div style=\"width: 100%;height: 100%;background:url('../../static/Img/transparent_black.png')\">\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">基站-001<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div>\n" +
-            "                                                                    <span id=\"spantest\" class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "\n" +
-            "                                                            </div>\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"\">\n" +
-            "                                                                    <span id=\"\" class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">基站-001<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-download-circle\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div >\n" +
-            "                                                                    <span class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "\n" +
-            "                                                            </div>\n" +
-            "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +
-            "                                                                <p style=\"float: left\"><i class=\"layui-icon layui-icon-upload-drag\"></i></p>\n" +
-            "                                                                <!--追加动画-->\n" +
-            "                                                                <div class=\"\">\n" +
-            "                                                                    <span class=\"layui-badge layui-bg-gray\">000</span>\n" +
-            "                                                                </div>\n" +
-            "                                                            </div>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                            <div style=\"width: 100%;height: 33%\">\n" +
-            "                                                <div style=\"width: 98%;height: 50%\">\n" +
-            "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">WIFI<span class=\"layui-badge-dot layui-bg-blue\"></span></p>\n" +
-            "                                                </div>\n" +
-            "                                                <div style=\"width: 95%;height: 50%;\">\n" +
-            "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
-            "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%;text-align: center\">\n" +
-            "                                                            <p style=\"font-size: 12px\">666 | 50% | 666</p>\n" +
-            "                                                        </div>\n" +
-            "                                                    </div>\n" +
-            "                                                </div>\n" +
-            "                                            </div>\n" +
-            "                                        </div>\n" +
-            "                                    </div>");
-    }
-
-    //生成随机颜色
+    /**
+     * 生成随机颜色值
+     * @returns {string}
+     */
     function getRandomColor(){
         var r = Math.floor(Math.random()*256);
         var g = Math.floor(Math.random()*256);
@@ -386,18 +215,31 @@
             ws.onmessage = function (evt)
             {
                 console.log(evt.data);
+                $("#seatContentDiv").remove();
+                $("#containerDiv").append("   <div id=\"seatContentDiv\" class=\"layui-tab-content\" style=\"\"></div>");
+                if (evt.data!=null){
+                    var data = JSON.parse(evt.data);
+                    for (var i=0;i<data.length;i++){
+                        addSeatDiv(data[i],i);
+                        addBaseStation(data[i].base_station,i);
+                    }
+                }
             };
 
             //	连接关闭时触发
             ws.onclose = function()
             {
-
+                // console.log("webSocket on close ...");
             };
 
-            //  通信发生错误时触发
-            ws.onerror =function () {
-                
-            }
+            //通讯错误时触发
+            ws.onerror = function()
+            {
+                layer.msg('msg：webSocket error...', {
+                    time: 3000, //3s后自动关闭
+                });
+            };
+
         } else {
             // 浏览器不支持 WebSocket
             console.log("该浏览器不支持 WebSocket");

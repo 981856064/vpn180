@@ -29,7 +29,9 @@ class Events
      */
     public static function onConnect($client_id)
     {
-        Gateway::sendToClient($client_id, "hi");
+        $get_data = new GetData();
+        $json = $get_data->testJson();
+        Gateway::sendToClient($client_id, $json);
         echo $client_id."login....\r\n";
     }
 
@@ -41,7 +43,6 @@ class Events
      */
    public static function onMessage($client_id, $message)
    {
-
        $array = json_decode($message, true);
        //根据页面请求的不同绑定uid
        switch ($array["request"]){
@@ -79,25 +80,27 @@ class Events
     public static function onWorkerStart()
     {
         Timer::add(1, function(){
-            $events = new Events();
-            //获取挂载的网关设备
-            $get_data = new GetData();
-            $vpn_array = $get_data->getVPN();
-            $test = null;
-            //遍历集合
-            foreach($vpn_array as $value){
-                //阅读文件，获取数据
-                $file_data = $events->getData($value);
-//                echo json_encode($file_data["log"]);
-                //分析数据，发送信息
-                $test = $get_data->getShowVisitor($file_data);
-                echo $test;
-                if ($test==null){
-                    return;
-                }
-                Gateway::sendToUid( Constant::GET_SHOW_VISITORS.$value,  $test);
-            }
-//            $json_string = json_encode($vpn_array, JSON_UNESCAPED_UNICODE);
+//
+//            $events = new Events();
+//            //获取挂载的网关设备
+//            $get_data = new GetData();
+//            $vpn_array = $get_data->getVPN();
+//            $test = null;
+//            //遍历集合
+//            foreach($vpn_array as $value){
+//                //阅读文件，获取数据
+//                $file_data = $events->getData($value);
+////                echo json_encode($file_data["log"]);
+//                //分析数据，发送信息
+//                $test = $get_data->getShowVisitor($file_data);
+//                echo $test;
+//                if ($test==null){
+//                    return;
+//                }
+//                Gateway::sendToUid( Constant::GET_SHOW_VISITORS.$value,  $test);
+//            }
+////            $json_string = json_encode($vpn_array, JSON_UNESCAPED_UNICODE);
         });
     }
+
 }
