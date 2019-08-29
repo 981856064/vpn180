@@ -31,7 +31,7 @@
                         <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
                         <th lay-data="{field:'name', width:100,style:'color: #1e9fff;'}">模板名称</th>
                         <th lay-data="{field:'userName', width:100}">用户名称</th>
-                        <th lay-data="{field:'seatName', width:220}">坐席名称</th>
+                        <th lay-data="{field:'seatName', width:220}">配置的坐席</th>
                         <!--<th lay-data="{field:'idCh', width:120}">ID-CH</th>-->
                         <th lay-data="{field:'create_time', width:125}">创建时间</th>
                         <th lay-data="{field:'update_time', width:125}">更新时间</th>
@@ -90,10 +90,13 @@
                     type: 2  //弹框类型
                     ,title: '新增模板'
                     ,id:'add'
-                    ,offset:['15%', '15%']  //坐标
-                    ,area: ['750px', '450px']  //大小
+                    ,area: ['100%', '100%']  //大小
                     ,shade: 0.5  //阴影
                     ,content: '../user/add_template'
+                    ,btn:['取消新增']
+                    ,btn1: function(){
+                        layer.closeAll();
+                    }
                     ,zIndex: layer.zIndex
                     ,success: function(layero){
                         layer.setTop(layero);

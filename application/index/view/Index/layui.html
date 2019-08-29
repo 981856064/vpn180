@@ -118,10 +118,32 @@
 
         //admin
         $("#templateSet").click(function () {
-            document.getElementById("iframes").src="user_set";
+            $.ajax({
+                type: "POST",
+                url: "../user/initialCheck",
+                data: {
+                    // "title": userName,
+                },
+                success: function (data) {
+                    if (data){
+                        document.getElementById("iframes").src="user_set";
+                    } else {
+                        document.getElementById("iframes").src="../user/initialize_settings";
+                    }
+                },
+                error: function (data) {
+                    layer.msg('msg：<br>未知错误', {
+                        time: 20000, //20s后自动关闭.
+                        btn: ['明白了']
+                    });
+                }
+            });
+
+
         })
         $("#accountSet").click(function () {
-            document.getElementById("iframes").src="account_set";
+            document.getElementById("iframes").src="../user/initialize_settings";
+            // document.getElementById("iframes").src="account_set";
         })
 
         //登录/退出
@@ -192,7 +214,7 @@
                                 name: "post",
                                 success: function (data) {
                                     console.log(data);
-                                    if (data == "true") {
+                                    if (data) {
                                         $("#userLi").css("visibility", "visible");
                                         $("#loginH5").html("退出登录");
                                         $.cookie('admin', userName);
