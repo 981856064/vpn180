@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VPN180监控中心</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
+    <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/Js/jquery.cookie.js"></script>
+    <script src="../../static/layui/layui.all.js"></script>
+    <script src="../../static/layui/lay/modules/layer.js"></script>
+    <script src="../../static/layui/lay/modules/jquery.js"></script>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin" id = "mianDiv" style="width:750px;padding-top:15px;text-align: center" >
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block" >
+                    <input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" style="width: 80%">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" id="addSeat">添加坐席</button>
+            </div>
+            <!-- 坐席内容 -->
+            <div class="layui-form-item">
+                <div class="layui-input-block" id="seatContent"></div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea name="note" placeholder="选填" class="layui-textarea"style="width: 80%"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formNext">提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formNext)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+    $("#addSeat").click(function () {
+        layer.msg('添加 坐席');
+    })
+</script>
+</html>

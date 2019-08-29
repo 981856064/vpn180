@@ -185,7 +185,7 @@
                         time: 20000, //20s后自动关闭.
                         btn: ['明白了'],
                         end: function(){
-                           //layer.msg销毁操作
+                            window.parent.location.reload();//修改成功后刷新父界面
                         }
                     });
 
@@ -206,6 +206,7 @@
         }
     });
 
+    //重置
     $("#resetBtn").click(function () {
         $("#user").val(null);
         $("#email").val(null);

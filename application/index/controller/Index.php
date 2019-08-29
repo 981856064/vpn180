@@ -30,6 +30,14 @@ class Index extends Controller
     }
 
     /**
+     * 返回视图 user_set
+     * @return \think\response\View
+     */
+    public function user_set(){
+        return view();
+    }
+
+    /**
      * 返回视图 seat
      * @return \think\response\View
      */

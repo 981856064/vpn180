@@ -111,7 +111,7 @@ namespace GatewayData{
                     "main"=>array(
                         "id"=>"001",
                         "status"=>"1", //0-正常，1-异常
-                        "name"=>"基站-".$i,
+                        "name"=>"基站-".($i+1),
                         "output"=>"1", //0-未开启，1-开始输出
                         "output_dBmw"=>"66", //输出（上传）电平值
                         "input"=>"0", //0-未开启，1-开始输入
@@ -120,7 +120,7 @@ namespace GatewayData{
                     "vice"=>array(
                         "id"=>"001",
                         "status"=>"0", //0-正常，1-异常
-                        "name"=>"基站-f".$i,
+                        "name"=>"基站-f".($i+1),
                         "output"=>"0", //0-未开启，1-开始输出
                         "output_dBmw"=>"00", //输出（上传）电平值
                         "input"=>"1", //0-未开启，1-开始输入
@@ -128,20 +128,20 @@ namespace GatewayData{
                     ),
                     "wifi"=>array(
                         "id" =>"002",
-                        "name"=>"WIFI-".$i,
+                        "name"=>"WIFI-".($i+1),
                         "status"=>"0", //0-正常，1-异常
-                        "data1"=>"00".$i,
-                        "data2"=>"000".$i,
-                        "data3"=>"000".$i,
-                        "data4"=>"000".$i,
+                        "data1"=>"00".($i+1),
+                        "data2"=>"000".($i+1),
+                        "data3"=>"000".($i+1),
+                        "data4"=>"000".($i+1),
                     )
                 );
             }
             $seat_array = array();
             for ($i=0;$i<4;$i++){
                 $seat_array[$i]= array(
-                    "id" =>"0".$i,
-                    "name"=>"坐席-0".$i,
+                    "id" =>($i+1),
+                    "name"=>"坐席-0".($i+1),
                     "status"=>"0", //0-正常，1-异常
                     "output"=>"0", //0-未开启，1-开始输出
                     "output_dBmw"=>"00", //输出（上传）电平值

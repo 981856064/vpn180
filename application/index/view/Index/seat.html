@@ -29,11 +29,11 @@
 </style>
 <body>
 <div style="width: 1150px;height:700px;padding: 0 2% 0 2%;margin:0 auto;">
-    <div id="containerDiv" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <div id="containerDiv" class="layui-tab layui-tab-brief">
         <ul class="layui-tab-title">
             <li class="layui-this">坐席监控</li>
         </ul>
-        <div id="seatContentDiv" class="layui-tab-content" style="">
+        <div id="seatContentDiv" class="layui-tab-content">
         </div>
     </div>
 </div>
@@ -56,13 +56,9 @@
      */
     function animation(sum , dBmw) {
         if (sum==1){
-            return "  <div class=\"layui-anim layui-anim-fadein layui-anim-loop\" style=\"padding-left:50%\">\n" +
-                "           <span class=\"layui-badge layui-bg-blue\" >"+dBmw+"</span>\n" +
-                "     </div>";
+            return " <span class=\"layui-badge layui-bg-blue\" >"+dBmw+"</span>\n";
         }else {
-            return "  <div style=\"padding-left:50%\">\n" +
-                "           <span class=\"layui-badge layui-bg-gray\" >"+dBmw+"</span>\n" +
-                "     </div>";
+            return " <span class=\"layui-badge layui-bg-gray\" >"+dBmw+"</span>\n";
         }
     }
     /**
@@ -132,7 +128,7 @@
                 "                                                <div style=\"width: 98%;height: 50%\">\n" +
                 "                                                    <p style=\"font-size: 14px;padding-top: 5px;padding-left:5% \">"+obj[j].main.name+spanStatus(obj[j].main.status)+
                 "                                                </div>\n" +
-                "                                                <div style=\"width: 95%;height: 50%;\">\n" +
+                "                                                <div style=\"width: 95%;" + "height: 50%;\">\n" +
                 "                                                    <div style=\"height: 50%;width: 100%;\">\n" +
                 "                                                        <div style=\"height: 96%;width: 100%;padding-top: 4%\">\n" +
                 "                                                            <div align=\"center\" style=\"width: 50%;float: left\">\n" +

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPN180监控中心-用户设置</title>
+    <link rel="icon" href="../../static/Img/ioc.ioc" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/modules/layer/default/layer.css">
+    <script src="../../static/Js/jquery_v3.4.1.js"></script>
+    <script src="../../static/layui/layui.js"></script>
+</head>
+<body style="direction: ltr;">
+<div style="width: 1150px;height:600px;padding: 0 2% 0 2%;margin:0 auto;">
+    <div id="containerDiv" class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">用户 - 模板设置</li>
+        </ul>
+        <div id="seatContentDiv" class="layui-tab-content">
+            <div>
+                <div class="layui-btn-group templateTable">
+                    <button class="layui-btn" data-type="addData"><i class="layui-icon layui-icon-add-1"></i>新增模板</button>
+                    <!--<button class="layui-btn" data-type="getCheckData">获取选中行数据</button>-->
+                    <!--<button class="layui-btn" data-type="getCheckLength">获取选中数目</button>-->
+                    <!--<button class="layui-btn" data-type="isAll">验证是否全选</button>-->
+                </div>
+
+                <table class="layui-table" lay-data="{width: 1100, height:450, url:'../user/getTemplates', page:true, id:'idTemplateTable'}"lay-filter="templateTable">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                        <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
+                        <th lay-data="{field:'name', width:100,style:'color: #1e9fff;'}">模板名称</th>
+                        <th lay-data="{field:'userName', width:100}">用户名称</th>
+                        <th lay-data="{field:'seatName', width:220}">坐席名称</th>
+                        <!--<th lay-data="{field:'idCh', width:120}">ID-CH</th>-->
+                        <th lay-data="{field:'create_time', width:125}">创建时间</th>
+                        <th lay-data="{field:'update_time', width:125}">更新时间</th>
+                        <th lay-data="{field:'note', width:120}">备注</th>
+                        <th lay-data="{fixed: 'right', align:'center', toolbar: '#operation'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+
+                <script type="text/html" id="operation">
+                    <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+        //监听表格复选框选择
+        table.on('checkbox(templateTable)', function(obj){
+            console.log(obj)
+        });
+        //监听工具条
+        table.on('tool(templateTable)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除【'+obj.data.name+'】么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            }
+        });
+
+        var $ = layui.$, active = {
+            getCheckData: function(){ //获取选中数据
+                var checkStatus = table.checkStatus('idTemplateTable')
+                    ,data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+            ,getCheckLength: function(){ //获取选中数目
+                var checkStatus = table.checkStatus('idTemplateTable')
+                    ,data = checkStatus.data;
+                layer.msg('选中了：'+ data.length + ' 个');
+            }
+            ,isAll: function(){ //验证是否全选
+                var checkStatus = table.checkStatus('idTemplateTable');
+                layer.msg(checkStatus.isAll ? '全选': '未全选')
+            }
+            ,addData:function () {
+                layer.open({
+                    type: 2  //弹框类型
+                    ,title: '新增模板'
+                    ,id:'add'
+                    ,offset:['15%', '15%']  //坐标
+                    ,area: ['750px', '450px']  //大小
+                    ,shade: 0.5  //阴影
+                    ,content: '../user/add_template'
+                    ,zIndex: layer.zIndex
+                    ,success: function(layero){
+                        layer.setTop(layero);
+                    }
+                });
+            }
+        };
+
+        $('.templateTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+
+    });
+</script>
+</html>
